@@ -43,7 +43,7 @@ read_changelog(
  Use the output of this action in conjunction with for example [`pilot`](https://github.com/fastlane/fastlane/tree/master/pilot#uploading-builds) to upload your change log to TestFlight or with [`github_release`](https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md#github-releases) to create a new release on Github.
  
 ### write_changelog
-**Coming soon**
+*Coming soon*
 
 
 ## Example
@@ -57,25 +57,6 @@ lane :beta do
   # write_changelog
 end
 ```
-
-<Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`. 
-
-**Note to author:** Please set up a sample project to make it easy for users to explore what your plugin does. Provide everything that is necessary to try out the plugin in this project (including a sample Xcode/Android project if necessary)>
-
-//## Run tests for this plugin
-
-To run both the tests, and code style validation, run
-
-````
-rake
-```
-
-To automatically fix many of the styling issues, use 
-
-rubocop -a
-
-//
-
 
 ## Issues and Feedback
 
