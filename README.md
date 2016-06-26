@@ -12,14 +12,14 @@ fastlane add_plugin changelog
 
 ## About changelog
 
-This plugin is inspired by and based on [Keep a CHANGELOG](http://keepachangelog.com/) project. [Keep a CHANGELOG](http://keepachangelog.com/) proposes a standardised format for keeping change log of your project repository in CHANGELOG.md file. This file contains a curated, chronologically ordered list of notable changes for each version of a project in human readable format.
+This plugin is inspired by and based on [Keep a CHANGELOG](http://keepachangelog.com/) project. [Keep a CHANGELOG](http://keepachangelog.com/) proposes a standardised format for keeping change log of your project repository in `CHANGELOG.md` file. This file contains a curated, chronologically ordered list of notable changes for each version of a project in human readable format.
 
-Since [Keep a CHANGELOG](http://keepachangelog.com/) project proposes a well-defined structure with _sections_ (e.g.: `[Unreleased]`, `0.3.0]`) and _subsections_ (`Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security`) it opens up an opportunity to automate reading from/writing to CHANGELOG.md with [`fastlane`](https://fastlane.tools). 
+Since [Keep a CHANGELOG](http://keepachangelog.com/) project proposes a well-defined structure with _sections_ (e.g.: `[Unreleased]`, `0.3.0]`) and _subsections_ (`Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security`) it opens up an opportunity to automate reading from/writing to `CHANGELOG.md` with [`fastlane`](https://fastlane.tools). 
 
 ## Getting started
 1. `cd` to your project folder
 2. `touch CHANGELOG.md`
-3. open CHANGELOG.md in your favourite text editor
+3. open `CHANGELOG.md` in your favourite text editor
 4. paste in proposed structure from [What’s a change log?](http://keepachangelog.com/)
 
 ## Actions
@@ -54,7 +54,7 @@ update_changelog(
  
 ### stamp_changelog
 Stamps the _Unreleased_ (see [How can I minimize the effort required?](http://keepachangelog.com/)) section with provided identifier in your project `CHANGELOG.md` file. 
-Additionally, you can provide git tag associated with this section. `stamp_changelog` will then create a new link to diff between this and previous section's tag on Github. This will enable you to quickly get to [comparison between two tags](https://help.github.com/articles/comparing-commits-across-time/).
+Additionally, you can provide git tag associated with this section. `stamp_changelog` will then create a link to diff between this and previous section's tag on Github. This will enable you to quickly get to [comparison between two tags](https://help.github.com/articles/comparing-commits-across-time/).
 ``` ruby
 stamp_changelog(
   section_identifier: "Build XYZ", # Specify identifier to stamp the Unreleased section with 
@@ -73,7 +73,7 @@ lane :beta do
   changelog = read_changelog # Read changelog
   pilot(changelog: changelog) # Send binary and changelog to TestFlight
   
-  stamp_changelog(section_identifier: "Build #{build_number}")
+  stamp_changelog(section_identifier: "Build #{build_number}") # Stamp Unreleased section with newly released build number
 end
 ```
 
