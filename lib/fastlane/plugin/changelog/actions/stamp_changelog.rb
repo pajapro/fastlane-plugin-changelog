@@ -36,7 +36,7 @@ module Fastlane
         end
 
         # 3. Create link to Github tags diff
-        unless params[:git_tag].empty?
+        if params[:git_tag] && !params[:git_tag].empty?
           last_line = file_content.lines.last
           previous_section_name = last_line[/\[(.*?)\]/, 1]
           previous_previous_tag = %r{(?<=compare\/)(.*)?(?=\.{3})}.match(last_line)
