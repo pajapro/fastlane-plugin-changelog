@@ -9,7 +9,8 @@ module Fastlane
         section_identifier = params[:section_identifier] unless params[:section_identifier].to_s.empty?
         Actions::UpdateChangelogAction.run(changelog_path: changelog_path,
                                           section_identifier: "[Unreleased]",
-                                          updated_section_identifier: section_identifier)
+                                          updated_section_identifier: section_identifier,
+                                          append_date: params[:stamp_date])
 
         file_content = ""
 
@@ -83,6 +84,11 @@ module Fastlane
                                        env_name: "FL_STAMP_CHANGELOG_SECTION_IDENTIFIER",
                                        description: "The unique section identifier to stamp the [Unreleased] section with",
                                        is_string: true),
+          FastlaneCore::ConfigItem.new(key: :stamp_date,
+                                       env_name: "FL_STAMP_CHANGELOG_SECTION_STAMP_DATE",
+                                       description: "Specifies whether the current date should be appended to section identifier",
+                                       default_value: true,
+                                       optional: true),
           FastlaneCore::ConfigItem.new(key: :git_tag,
                                        env_name: "FL_STAMP_CHANGELOG_GIT_TAG",
                                        description: "The git tag associated with this section",
