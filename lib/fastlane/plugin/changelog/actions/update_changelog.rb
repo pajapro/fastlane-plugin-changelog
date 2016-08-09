@@ -28,6 +28,14 @@ module Fastlane
 
               line_old = line.dup
               line.sub!(section_name, new_section_identifier)
+
+              if params[:append_date]
+                now = Time.now.strftime("%Y-%m-%d")
+                line.concat(" - " + now)
+                line.delete!("\n")  # remove line break, because concatenation adds line break between section identifer & date
+                line.concat("\n") # add line break to the end of the string, in order to start next line on the next line
+              end
+
               found_identifying_section = false
               
               UI.message "Old section identifier: #{line_old.delete!("\n")}"
@@ -86,6 +94,11 @@ module Fastlane
                                        env_name: "FL_UPDATE_CHANGELOG_UPDATED_SECTION_IDENTIFIER",
                                        description: "The updated unique section identifier",
                                        is_string: true,
+                                       optional: true),
+          FastlaneCore::ConfigItem.new(key: :append_date,
+                                       env_name: "FL_UPDATE_CHANGELOG_APPEND_DATE",
+                                       description: "Appends the current date in YYYY-MM-DD format after the section identifier",
+                                       default_value: true,
                                        optional: true)
           # FastlaneCore::ConfigItem.new(key: :updated_section_content,
           #                              env_name: "FL_UPDATE_CHANGELOG_UPDATED_SECTION_CONTENT",
