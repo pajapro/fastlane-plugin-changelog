@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.3.0] - 2015-08-09
 ### Added
-- Possibility to attach date to section identifier
+- Possibility to attach current date to section identifier in YYYY/MM/DD format
 
 ### Fixed
 - `git_tag` argument is not mandatory for `stamp_changelog` action ([issue #5](https://github.com/pajapro/fastlane-plugin-changelog/issues/5))
