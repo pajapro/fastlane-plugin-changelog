@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Fixed
+- Remove white space following markdown element [#9](https://github.com/pajapro/fastlane-plugin-changelog/issues/9)
+
+### Added
+- Unit tests
+
 ## [0.3.0] - 2015-08-09
 ### Added
 - Possibility to attach current date to section identifier in YYYY/MM/DD format
