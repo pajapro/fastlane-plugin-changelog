@@ -47,7 +47,15 @@ module Fastlane
         markdownless_line = line
         excluded_markdown_elements.each do |element|
           if line =~ /^#{element}/
-            markdownless_line = markdownless_line.gsub(element.to_s, "")
+            indexOfElement = line.index(element)  
+            indexOfWhitespace = indexOfElement + element.to_s.length
+            
+            if line[indexOfWhitespace] == " " # remove white space (if any) following the markdown element
+              markdownless_line = markdownless_line.gsub(element.to_s + " ", "")  
+            else 
+              markdownless_line = markdownless_line.gsub(element.to_s, "")  
+            end
+            
           end
         end
 
