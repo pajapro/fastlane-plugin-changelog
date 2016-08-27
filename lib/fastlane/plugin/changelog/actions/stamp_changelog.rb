@@ -1,16 +1,32 @@
 module Fastlane
   module Actions
     class StampChangelogAction < Action
+      UNRELEASED_IDENTIFIER = '[Unreleased]'
+
       def self.run(params)
+        # 1. Ensure CHANGELOG.md exists
         changelog_path = params[:changelog_path] unless params[:changelog_path].to_s.empty?
         UI.error("CHANGELOG.md at path '#{changelog_path}' does not exist") unless File.exist?(changelog_path)
 
-        # 1. Update [Unreleased] section with provided identifier
-        section_identifier = params[:section_identifier] unless params[:section_identifier].to_s.empty?
+        # 2. Ensure there are changes in [Unreleased] section
+        unreleased_section_content = Actions::ReadChangelogAction.run(changelog_path: changelog_path, section_identifier: UNRELEASED_IDENTIFIER)
+        if unreleased_section_content.eql?("\n")
+          UI.important("WARNING: No changes in [Unreleased] section to stamp!")
+        else 
+          section_identifier = params[:section_identifier] unless params[:section_identifier].to_s.empty?
+          stamp_date = params[:stamp_date]
+          git_tag = params[:git_tag]
+          
+          stamp(changelog_path, section_identifier, stamp_date, git_tag)
+        end
+      end
+
+      def self.stamp(changelog_path, section_identifier, stamp_date, git_tag)
+        # 1. Update [Unreleased] section with given identifier
         Actions::UpdateChangelogAction.run(changelog_path: changelog_path,
-                                          section_identifier: "[Unreleased]",
+                                          section_identifier: UNRELEASED_IDENTIFIER,
                                           updated_section_identifier: section_identifier,
-                                          append_date: params[:stamp_date])
+                                          append_date: stamp_date)
 
         file_content = ""
 
@@ -37,13 +53,13 @@ module Fastlane
         end
 
         # 3. Create link to Github tags diff
-        if params[:git_tag] && !params[:git_tag].empty?
+        if !git_tag.nil? && !git_tag.empty?
           last_line = file_content.lines.last
           previous_section_name = last_line[/\[(.*?)\]/, 1]
           previous_previous_tag = %r{(?<=compare\/)(.*)?(?=\.{3})}.match(last_line)
           previous_tag = /(?<=\.{3})(.*)?/.match(last_line)
 
-          last_line.sub!(previous_tag.to_s, params[:git_tag]) # Replace previous tag with new
+          last_line.sub!(previous_tag.to_s, git_tag) # Replace previous tag with new
           last_line.sub!(previous_previous_tag.to_s, previous_tag.to_s) # Replace previous-previous tag with previous
           last_line.sub!(previous_section_name.to_s, section_identifier) # Replace section identifier
 
