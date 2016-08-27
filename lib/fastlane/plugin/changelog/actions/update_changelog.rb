@@ -92,7 +92,7 @@ module Fastlane
                                        end),
           FastlaneCore::ConfigItem.new(key: :updated_section_identifier,
                                        env_name: "FL_UPDATE_CHANGELOG_UPDATED_SECTION_IDENTIFIER",
-                                       description: "The updated unique section identifier",
+                                       description: "The updated unique section identifier (without square brackets)",
                                        is_string: true,
                                        optional: true),
           FastlaneCore::ConfigItem.new(key: :append_date,
