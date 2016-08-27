@@ -4,13 +4,12 @@ module Fastlane
       def self.run(params)
         changelog_path = params[:changelog_path] unless params[:changelog_path].to_s.empty?
         UI.error("CHANGELOG.md at path '#{changelog_path}' does not exist") unless File.exist?(changelog_path)
-        
+
         section_identifier = params[:section_identifier] unless params[:section_identifier].to_s.empty?
         escaped_section_identifier = section_identifier[/\[(.*?)\]/, 1]
 
         new_section_identifier = params[:updated_section_identifier] unless params[:updated_section_identifier].to_s.empty?
-        # new_section_content = params[:updated_section_content] unless (params[:updated_section_content].to_s.empty?)
-        
+
         UI.message "Starting to update #{section_identifier} section of '#{changelog_path}'"
 
         # Read & update file content
@@ -32,12 +31,10 @@ module Fastlane
               if params[:append_date]
                 now = Time.now.strftime("%Y-%m-%d")
                 line.concat(" - " + now)
-                line.delete!("\n")  # remove line break, because concatenation adds line break between section identifer & date
+                line.delete!("\n") # remove line break, because concatenation adds line break between section identifer & date
                 line.concat("\n") # add line break to the end of the string, in order to start next line on the next line
               end
 
-              found_identifying_section = false
-              
               UI.message "Old section identifier: #{line_old.delete!("\n")}"
               UI.message "New section identifier: #{line.delete("\n")}"
 

@@ -12,11 +12,11 @@ module Fastlane
         unreleased_section_content = Actions::ReadChangelogAction.run(changelog_path: changelog_path, section_identifier: UNRELEASED_IDENTIFIER)
         if unreleased_section_content.eql?("\n")
           UI.important("WARNING: No changes in [Unreleased] section to stamp!")
-        else 
+        else
           section_identifier = params[:section_identifier] unless params[:section_identifier].to_s.empty?
           stamp_date = params[:stamp_date]
           git_tag = params[:git_tag]
-          
+
           stamp(changelog_path, section_identifier, stamp_date, git_tag)
         end
       end

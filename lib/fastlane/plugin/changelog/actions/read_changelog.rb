@@ -8,7 +8,7 @@ module Fastlane
       def self.run(params)
         changelog_path = params[:changelog_path] unless params[:changelog_path].to_s.empty?
         UI.error("CHANGELOG.md at path '#{changelog_path}' does not exist") unless File.exist?(changelog_path)
-        
+
         section_identifier = params[:section_identifier] unless params[:section_identifier].to_s.empty?
         escaped_section_identifier = section_identifier[/\[(.*?)\]/, 1]
 
@@ -46,16 +46,14 @@ module Fastlane
       def self.remove_markdown(line, excluded_markdown_elements)
         markdownless_line = line
         excluded_markdown_elements.each do |element|
-          if line =~ /^#{element}/
-            indexOfElement = line.index(element)  
-            indexOfWhitespace = indexOfElement + element.to_s.length
-            
-            if line[indexOfWhitespace] == " " # remove white space (if any) following the markdown element
-              markdownless_line = markdownless_line.gsub(element.to_s + " ", "")  
-            else 
-              markdownless_line = markdownless_line.gsub(element.to_s, "")  
-            end
-            
+          next unless line =~ /^#{element}/
+          index_of_element = line.index(element)
+          index_of_whitespace = index_of_element + element.to_s.length
+
+          if line[index_of_whitespace] == " " # remove white space (if any) following the markdown element
+            markdownless_line = markdownless_line.gsub(element.to_s + " ", "")
+          else
+            markdownless_line = markdownless_line.gsub(element.to_s, "")
           end
         end
 
