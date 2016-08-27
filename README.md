@@ -22,10 +22,12 @@ Since [Keep a CHANGELOG](http://keepachangelog.com/) project proposes a well-def
 3. open `CHANGELOG.md` in your favourite text editor
 4. paste in proposed structure from [What’s a change log?](http://keepachangelog.com/)
 
+🤖  A feature request to automate this during installation has [been raised](https://github.com/fastlane/fastlane/issues/5736).
+
 ## Actions
 `fastlane-plugin-changelog` consists of 3 actions enabling you to manipulate `CHANGELOG.md` from [`fastlane`](https://fastlane.tools).
 
-### read_changelog
+### read_changelog 📖
 
 Reads the content of a section from your project's `CHANGELOG.md` file. `CHANGELOG.md` must follow structure proposed by [Keep a CHANGELOG](http://keepachangelog.com/) project. 
 
@@ -43,7 +45,7 @@ read_changelog(
  
  Use the output of this action in conjunction with for example [`pilot`](https://github.com/fastlane/fastlane/tree/master/pilot#uploading-builds) to upload your change log to TestFlight or with [`github_release`](https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md#github-releases) to create a new release on Github.
 
-### update_changelog
+### update_changelog 📝
 Updates section identifier of your project's `CHANGELOG.md` file. 
 ``` ruby
 update_changelog(
@@ -52,7 +54,7 @@ update_changelog(
 )
 ```
  
-### stamp_changelog
+### stamp_changelog 🔖
 Stamps the _Unreleased_ (see [How can I minimize the effort required?](http://keepachangelog.com/)) section with provided identifier in your project `CHANGELOG.md` file and sets up a new _Unreleased_ section above it.
 Additionally, you can provide an optional `git_tag` param, specifing git tag associated with this section. `stamp_changelog` will then create a link to diff between this and previous section's tag on Github. This will enable you to quickly get to [comparison between two tags](https://help.github.com/articles/comparing-commits-across-time/).
 ``` ruby
