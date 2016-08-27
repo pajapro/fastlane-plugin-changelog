@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Unit tests
+- The ability to skip stamping when [Unreleased] section is empty [#7](https://github.com/pajapro/fastlane-plugin-changelog/issues/7)
 
 ## [0.3.0] - 2015-08-09
 ### Added
