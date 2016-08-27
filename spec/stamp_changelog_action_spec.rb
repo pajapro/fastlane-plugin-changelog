@@ -48,5 +48,21 @@ describe Fastlane::Actions::StampChangelogAction do
 
       expect(read_result).to eq("\n")
     end
+
+    it 'rejects to stamp empty [Unreleased] section' do
+      expect(FastlaneCore::UI).to receive(:important).with("WARNING: No changes in [Unreleased] section to stamp!")
+
+      # Stamp [Unreleased] with given section identifier
+      Fastlane::FastFile.new.parse("lane :test do
+          stamp_changelog(changelog_path: '#{changelog_mock_path}',
+                          section_identifier: '#{updated_section_identifier}')
+          end").runner.execute(:test)
+
+      # Try to stamp [Unreleased] section again, while [Unreleased] section is actually empty
+      Fastlane::FastFile.new.parse("lane :test do
+          stamp_changelog(changelog_path: '#{changelog_mock_path}',
+                          section_identifier: '#{updated_section_identifier}')
+          end").runner.execute(:test)
+    end
   end
 end
