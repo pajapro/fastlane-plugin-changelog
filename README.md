@@ -1,6 +1,6 @@
 # changelog plugin
 
-[![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-changelog) [![Build Status](https://travis-ci.org/pajapro/fastlane-plugin-changelog.svg?branch=master)](https://travis-ci.org/pajapro/fastlane-plugin-changelog) [![Twitter: @hello_paja](https://img.shields.io/badge/contact-@Hello_Paja-blue.svg?style=flat)](https://twitter.com/hello_paja)
+[![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-changelog)[![Build Status](https://travis-ci.org/pajapro/fastlane-plugin-changelog.svg?branch=master)](https://travis-ci.org/pajapro/fastlane-plugin-changelog) [![Twitter: @hello_paja](https://img.shields.io/badge/contact-@Hello_Paja-blue.svg?style=flat)](https://twitter.com/hello_paja)
 
 ## Getting Started
 
