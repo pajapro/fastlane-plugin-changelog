@@ -1,4 +1,6 @@
 # os: osx # enable this if you need OS X support
+before_install:
+  - gem install bundler
 language: ruby
 rvm:
   - 2.2
