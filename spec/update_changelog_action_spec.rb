@@ -21,7 +21,7 @@ describe Fastlane::Actions::UpdateChangelogAction do
         end").runner.execute(:test)
 
       # Update [Unreleased] with another section identifier
-		  update_result = Fastlane::FastFile.new.parse("lane :test do
+		  Fastlane::FastFile.new.parse("lane :test do
         	update_changelog(changelog_path: '#{changelog_mock_path}',
                            updated_section_identifier: '#{updated_section_identifier}')
       	end").runner.execute(:test)
@@ -43,7 +43,7 @@ describe Fastlane::Actions::UpdateChangelogAction do
         end").runner.execute(:test)
 
       # Update given section identifier with another one
-      update_result = Fastlane::FastFile.new.parse("lane :test do
+      Fastlane::FastFile.new.parse("lane :test do
           update_changelog(changelog_path: '#{changelog_mock_path}',
                            section_identifier: '#{existing_section_identifier}',
                            updated_section_identifier: '#{updated_section_identifier}')
