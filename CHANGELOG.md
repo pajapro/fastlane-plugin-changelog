@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.3.1] - 2015-08-27
+## [Unreleased]
 ### Fixed
 - Remove white space following markdown element [#9](https://github.com/pajapro/fastlane-plugin-changelog/issues/9)
 
