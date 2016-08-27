@@ -34,7 +34,7 @@ describe Fastlane::Actions::StampChangelogAction do
       expect(read_result).to eq(post_stamp_read_result)
     end
 
-    it 'creates an empty [Unreleased] section', :now => true do
+    it 'creates an empty [Unreleased] section' do
       # Stamp [Unreleased] with given section identifier
       Fastlane::FastFile.new.parse("lane :test do
           stamp_changelog(changelog_path: '#{changelog_mock_path}',
