@@ -49,8 +49,8 @@ read_changelog(
 Updates section identifier of your project's `CHANGELOG.md` file. 
 ``` ruby
 update_changelog(
-  section_identifier: "[Build 123]", # Specify what section to update
-  updated_section_identifier: "Build 321" # Specify new section identifier
+  section_identifier: '[Build 123]', # Specify what section to update
+  updated_section_identifier: 'Build 321' # Specify new section identifier
 )
 ```
  
@@ -59,8 +59,8 @@ Stamps the _Unreleased_ (see [How can I minimize the effort required?](http://ke
 Additionally, you can provide an optional `git_tag` param, specifing git tag associated with this section. `stamp_changelog` will then create a link to diff between this and previous section's tag on Github. This will enable you to quickly get to [comparison between two tags](https://help.github.com/articles/comparing-commits-across-time/).
 ``` ruby
 stamp_changelog(
-  section_identifier: "Build XYZ", # Specify identifier to stamp the Unreleased section with 
-  git_tag: "bXYZ" # Specify reference to git tag associated with this section
+  section_identifier: 'Build XYZ', # Specify identifier to stamp the Unreleased section with 
+  git_tag: 'bXYZ' # Specify reference to git tag associated with this section
 )
 ```
 
