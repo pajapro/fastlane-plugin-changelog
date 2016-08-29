@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
       Dir[File.expand_path('**/{actions,helper}/*.rb', File.dirname(__FILE__))]
     end
 
+    # Offer user to setup CHANGELOG.md file in project folder (unless it already exists)
     def self.setup_changelog
       unless has_changelog?
         if FastlaneCore::UI.confirm('Your project folder does not have CHANGELOG.md - do you want to create one now?')
