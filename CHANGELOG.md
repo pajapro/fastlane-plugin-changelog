@@ -6,7 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.5.0] - 2015-09-12
 ### Added
-- Installation wizard in order to help to create the default CHANGELOG.md in project folder
+- Installation wizard in order to help to create the default CHANGELOG.md in project folder [#1](https://github.com/pajapro/fastlane-plugin-changelog/issues/1)
 
 ## [0.4.0] - 2015-08-27
 ### Fixed
