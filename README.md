@@ -16,14 +16,6 @@ This plugin is inspired by and based on [Keep a CHANGELOG](http://keepachangelog
 
 Since [Keep a CHANGELOG](http://keepachangelog.com/) project proposes a well-defined structure with _sections_ (e.g.: `[Unreleased]`, `0.3.0]`) and _subsections_ (`Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security`) it opens up an opportunity to automate reading from/writing to `CHANGELOG.md` with [`fastlane`](https://fastlane.tools). 
 
-## Getting started
-1. `cd` to your project folder
-2. `touch CHANGELOG.md`
-3. open `CHANGELOG.md` in your favourite text editor
-4. paste in proposed structure from [What’s a change log?](http://keepachangelog.com/)
-
-🤖  A feature request to automate this during installation has [been raised](https://github.com/fastlane/fastlane/issues/5736).
-
 ## Actions
 `fastlane-plugin-changelog` consists of 3 actions enabling you to manipulate `CHANGELOG.md` from [`fastlane`](https://fastlane.tools).
 
