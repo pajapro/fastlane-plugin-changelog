@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.5.0] - 2015-09-12
+### Added
+- Installation wizard in order to help to create the default CHANGELOG.md in project folder
+
 ## [0.4.0] - 2015-08-27
 ### Fixed
 - Remove white space following markdown element [#9](https://github.com/pajapro/fastlane-plugin-changelog/issues/9)
@@ -34,3 +38,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [0.2.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.1.0...v0.2.0
 [0.3.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.2.0...v0.3.0
 [0.4.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.3.0...v0.4.0
+[0.5.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.4.0...v0.5.0
