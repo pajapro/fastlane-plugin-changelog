@@ -15,6 +15,7 @@ module Fastlane
         # Read & update file content
         file_content = ""
         File.open(changelog_path, "r") do |file|
+          line_separator = Helper::ChangelogHelper.get_line_separator(changelog_path)
           file.each_line do |line|
             # Find line matching section identifier
             if line =~ /\#{2}\s?\[#{escaped_section_identifier}\]/
@@ -31,8 +32,8 @@ module Fastlane
               if params[:append_date]
                 now = Time.now.strftime("%Y-%m-%d")
                 line.concat(" - " + now)
-                line.delete!("\n") # remove line break, because concatenation adds line break between section identifer & date
-                line.concat("\n") # add line break to the end of the string, in order to start next line on the next line
+                line.delete!(line_separator) # remove line break, because concatenation adds line break between section identifer & date
+                line.concat(line_separator) # add line break to the end of the string, in order to start next line on the next line
               end
 
               UI.message "Old section identifier: #{line_old.delete!("\n")}"
