@@ -14,10 +14,10 @@ module Fastlane
         c = enum.next
         loop do
           case c[/\r|\n/]
-            when "\n" then break
-            when "\r"
-              c << "\n" if enum.peek=="\n"
-              break
+          when "\n" then break
+          when "\r"
+            c << "\n" if enum.peek == "\n"
+            break
           end
           c = enum.next
         end
