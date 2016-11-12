@@ -6,7 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.5.1] - 2015-11-12
 ### Fixed
-- Fix line separator for CRLF files (issue #13)
+- Fix line separator for CRLF files (issue [#13](https://github.com/pajapro/fastlane-plugin-changelog/issues/13))
 
 ## [0.5.0] - 2015-09-12
 ### Added
