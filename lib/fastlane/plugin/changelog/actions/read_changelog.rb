@@ -2,6 +2,7 @@ module Fastlane
   module Actions
     module SharedValues
       READ_CHANGELOG_SECTION_CONTENT = :READ_CHANGELOG_SECTION_CONTENT
+      READ_CHANGELOG_CHANGELOG_PATH = :READ_CHANGELOG_CHANGELOG_PATH
     end
 
     class ReadChangelogAction < Action
@@ -40,6 +41,7 @@ module Fastlane
 
         UI.success("Finished reading #{section_identifier} section from '#{changelog_path}'") unless section_content.empty?
 
+        Actions.lane_context[SharedValues::READ_CHANGELOG_CHANGELOG_PATH] = changelog_path
         Actions.lane_context[SharedValues::READ_CHANGELOG_SECTION_CONTENT] = section_content
       end
 
