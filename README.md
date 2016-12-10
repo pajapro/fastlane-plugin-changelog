@@ -115,7 +115,7 @@ emojified_changelog = emojify_changelog # Emojify the output of `read_changelog`
 slack(message: "Hey team, we have a new build for you, which includes the following: #{emojified_changelog}") # share on Slack
 ```
 
-*NOTE*: do not send emojified changelog to iTunes Connect as it cannot handle emojies. 
+*NOTE*: do not send emojified changelog to iTunes Connect as it cannot handle emojis. 
 
 ## Example
 As a developer you have to **remember to keep your CHANGELOG.md up-to-date** with whatever features, bug fixes etc. your repo contains and let [`fastlane`](https://fastlane.tools) do the rest. 
