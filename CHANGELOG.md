@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.6.0] - 2015-12-10
+### Added
+- New [emojify action](https://github.com/pajapro/fastlane-plugin-changelog/blob/master/README.md#-emojify_changelog)
+
 ## [0.5.1] - 2015-11-12
 ### Fixed
 - Fix line separator for CRLF files (issue [#13](https://github.com/pajapro/fastlane-plugin-changelog/issues/13))
