@@ -60,25 +60,25 @@ stamp_changelog(
 Emojifies the output of `read_changelog` action. When you share changelog with the rest of your team on e.g.: Slack channel, it's nice to sprinkle your subsections with a bit of visuals so it immediately catches eyes of your teammates. `emojify_changelog` uses the output of `read_changelog` action to append an emoji to known subsections, for example:
 
 ```
-### Added
+Added
 - New awesome feature
 
-### Changed
+Changed
 - Onboarding flow 
 
-### Fixed
+Fixed
 - Fix Markdown links 
 
-### Removed
+Removed
 - User tracking 
 
-### Work In Progress
+Work In Progress
 - Sales screen
 
-### Security
+Security
 - Enable SSL pinning
 
-### Deprecated
+Deprecated
 - Obsolete contact screen
 ```
 
@@ -86,25 +86,25 @@ into
 
 
 ```
-### Added 🎁
+Added 🎁
 - New awesome feature
 
-### Changed ↔️
+Changed ↔️
 - Onboarding flow UI
 
-### Fixed ✅
+Fixed ✅
 - Fix Markdown links 
 
-### Removed 🚫
+Removed 🚫
 - User tracking 
 
-### Work In Progress 🚧
+Work In Progress 🚧
 - Sales screen
 
-### Security 🔒
+Security 🔒
 - Enable SSL pinning
 
-### Deprecated 💨
+Deprecated 💨
 - Obsolete contact screen
 ```
 
