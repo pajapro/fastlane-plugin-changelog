@@ -47,7 +47,25 @@ both "open" and "closed" source projects equally.
 
 ## [0.0.6] - 2014-12-12
 ### Added
-- README section on "yanked" releases.
+- New awesome feature
+
+### Changed
+- Onboarding flow 
+
+### Fixed
+- Fix Markdown links 
+
+### Removed
+- User tracking 
+
+### Work In Progress
+- Sales screen
+
+### Security
+- Enable SSL pinning
+
+### Deprecated
+- Obsolete contact screen
 
 ## [0.0.5] - 2014-08-09
 ### Added
