@@ -50,13 +50,13 @@ both "open" and "closed" source projects equally.
 - New awesome feature
 
 ### Changed
-- Onboarding flow 
+- Onboarding flow
 
 ### Fixed
-- Fix Markdown links 
+- Fix Markdown links
 
 ### Removed
-- User tracking 
+- User tracking
 
 ### Work In Progress
 - Sales screen
