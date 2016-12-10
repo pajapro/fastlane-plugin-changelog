@@ -82,8 +82,7 @@ Deprecated:
 - Obsolete contact screen
 ```
 
-into
-
+emojifies into:
 
 ```
 Added 🎁:
@@ -112,9 +111,8 @@ Example of use:
 ``` ruby
 changelog = read_changelog # Read changelog
 pilot(changelog: changelog) # Send binary and changelog to TestFlight
-emojified_changelog = emojify_changelog
-slack(message: "Hey team, we have a new build for you, which includes the following: #{emojified_changelog}")
-
+emojified_changelog = emojify_changelog # Emojify the output of `read_changelog` action
+slack(message: "Hey team, we have a new build for you, which includes the following: #{emojified_changelog}") # share on Slack
 ```
 
 *NOTE*: do not send emojified changelog to iTunes Connect as it cannot handle emojies. 
