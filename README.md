@@ -56,6 +56,69 @@ stamp_changelog(
 )
 ```
 
+### 😁 emojify_changelog
+Emojifies the output of `read_changelog` action. When you share changelog with the rest of your team on e.g.: Slack channel, it's nice to sprinkle your subsections with a bit of visuals so it immediately catches eyes of your teammates. `emojify_changelog` uses the output of `read_changelog` action to append an emoji to known subsections, for example:
+
+```
+Added:
+- New awesome feature
+
+Changed:
+- Onboarding flow 
+
+Fixed:
+- Fix Markdown links 
+
+Removed:
+- User tracking 
+
+Work In Progress:
+- Sales screen
+
+Security:
+- Enable SSL pinning
+
+Deprecated:
+- Obsolete contact screen
+```
+
+into
+
+
+```
+Added 🎁:
+- New awesome feature
+
+Changed ↔️:
+- Onboarding flow UI
+
+Fixed ✅:
+- Fix Markdown links 
+
+Removed 🚫:
+- User tracking 
+
+Work In Progress 🚧:
+- Sales screen
+
+Security 🔒:
+- Enable SSL pinning
+
+Deprecated 💨:
+- Obsolete contact screen
+```
+
+Example of use:
+``` ruby
+changelog = read_changelog # Read changelog
+pilot(changelog: changelog) # Send binary and changelog to TestFlight
+emojified_changelog = emojify_changelog
+slack(message: "Hey team, we have a new build for you, which includes the following: #{emojified_changelog}")
+
+```
+
+*NOTE*: do not send emojified changelog to iTunes Connect as it cannot handle emojies. 
+
 ## Example
 As a developer you have to **remember to keep your CHANGELOG.md up-to-date** with whatever features, bug fixes etc. your repo contains and let [`fastlane`](https://fastlane.tools) do the rest. 
 
