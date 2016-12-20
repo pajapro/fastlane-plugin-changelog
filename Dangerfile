@@ -7,8 +7,17 @@ fail "Please re-submit this PR to develop, we may have already fixed your issue.
 # Warn when there is a big PR
 warn("Big PR") if git.lines_of_code > 500
 
-# Add a CHANGELOG entry for app changes
-if !git.modified_files.include?("CHANGELOG.md") && has_app_changes
-  fail("Please include a CHANGELOG entry. \nYou can find it at [CHANGELOG.md](https://github.com/pajapro/fastlane-plugin-changelog/blob/master/CHANGELOG.md).")
-  message "Note, we hard-wrap at 80 chars and use 2 spaces after the last line."
+# Request a CHANGELOG entry, and give an example
+has_app_changes = !git.modified_files.grep(/lib/).empty?
+if !git.modified_files.include?('CHANGELOG.md') && has_app_changes
+  fail("Please include a CHANGELOG entry to credit yourself! \nYou can find it at [CHANGELOG.md](https://github.com/pajapro/fastlane-plugin-changelog/blob/master/CHANGELOG.md).", :sticky => false)
+  markdown <<-MARKDOWN
+Here's an example of your CHANGELOG entry:
+```markdown
+* #{pr_title}#{' '}
+  [#{pr_author}](https://github.com/#{pr_author})
+  [#issue_number](https://github.com/pajapro/fastlane-plugin-changelog/issues/issue_number)
+```
+*note*: There are two invisible spaces after the entry's text.
+MARKDOWN
 end
