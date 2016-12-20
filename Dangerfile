@@ -2,7 +2,7 @@
 fail "Please provide a summary in the Pull Request description" if github.pr_body.length < 5
 
 # Only accept PRs to the `develop` branch
-fail "Please re-submit this PR to develop, we may have already fixed your issue." if github.branch_for_base != "develop"
+fail "Please re-submit this PR to develop, we may have already fixed your issue." if github.branch_for_base != "master"
 
 # Warn when there is a big PR
 warn("Big PR") if git.lines_of_code > 500
