@@ -12,10 +12,10 @@ has_app_changes = !git.modified_files.grep(/lib/).empty?
 if !git.modified_files.include?('CHANGELOG.md') && has_app_changes
   fail("Please include a CHANGELOG entry to credit yourself! \nYou can find it at [CHANGELOG.md](https://github.com/pajapro/fastlane-plugin-changelog/blob/master/CHANGELOG.md).", :sticky => false)
   markdown <<-MARKDOWN
-Here's an example of your CHANGELOG entry:
+Here's an example of your CHANGELOG entry under [Unreleased] section:
 ```markdown
 ### Fixed:
-- {github.pr_title}
+- #{github.pr_title}
 ```
 *note*: There are two invisible spaces after the entry's text.
 MARKDOWN
