@@ -14,9 +14,8 @@ if !git.modified_files.include?('CHANGELOG.md') && has_app_changes
   markdown <<-MARKDOWN
 Here's an example of your CHANGELOG entry:
 ```markdown
-* #{pr_title}#{' '}
-  [#{pr_author}](https://github.com/#{pr_author})
-  [#issue_number](https://github.com/pajapro/fastlane-plugin-changelog/issues/issue_number)
+### Fixed:
+- {github.pr_title}
 ```
 *note*: There are two invisible spaces after the entry's text.
 MARKDOWN
