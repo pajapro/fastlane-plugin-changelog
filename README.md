@@ -24,7 +24,7 @@ Since [Keep a CHANGELOG](http://keepachangelog.com/) project proposes a well-def
 Reads the content of a section from your project's `CHANGELOG.md` file. `CHANGELOG.md` must follow structure proposed by [Keep a CHANGELOG](http://keepachangelog.com/) project. 
 
 ``` ruby
-read_changelog	# Reads the Unreleased section from CHANGELOG.md in your project folder
+read_changelog	# Reads the Unreleased section from CHANGELOG.md in your project's folder
 ```
 
 ``` ruby
