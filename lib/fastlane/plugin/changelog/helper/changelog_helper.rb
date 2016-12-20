@@ -5,7 +5,7 @@ module Fastlane
       # as `Helper::ChangelogHelper.your_method`
       #
       def self.show_message
-        UI.message("Hello from the changelog plugin helper")
+        UI.message("Hello from the changelog plugin helper!")
       end
 
       def self.get_line_separator(file_path)

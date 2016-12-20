@@ -17,6 +17,5 @@ Here's an example of your CHANGELOG entry under [Unreleased] section:
 ### Fixed:
 - #{github.pr_title}
 ```
-*note*: There are two invisible spaces after the entry's text.
 MARKDOWN
 end
