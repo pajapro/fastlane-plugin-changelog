@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed:
+- Fix stamp_changelog action
+
 ## [0.6.0] - 2015-12-10
 ### Added
 - New [emojify action](https://github.com/pajapro/fastlane-plugin-changelog/blob/master/README.md#-emojify_changelog)

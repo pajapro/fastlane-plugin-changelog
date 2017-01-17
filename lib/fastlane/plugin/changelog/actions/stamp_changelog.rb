@@ -9,7 +9,7 @@ module Fastlane
         UI.error("CHANGELOG.md at path '#{changelog_path}' does not exist") unless File.exist?(changelog_path)
 
         # 2. Ensure there are changes in [Unreleased] section
-        unreleased_section_content = Actions::ReadChangelogAction.run(changelog_path: changelog_path, section_identifier: UNRELEASED_IDENTIFIER)
+        unreleased_section_content = Actions::ReadChangelogAction.run(changelog_path: changelog_path, section_identifier: UNRELEASED_IDENTIFIER, excluded_markdown_elements: ["###"])
         if unreleased_section_content.eql?("\n")
           UI.important("WARNING: No changes in [Unreleased] section to stamp!")
         else
