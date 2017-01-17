@@ -6,7 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.6.1] - 2016-01-17
 ### Fixed:
-- Fix stamp_changelog action
+- Fix stamp_changelog action [PR #17](https://github.com/pajapro/fastlane-plugin-changelog/pull/17)
 
 ## [0.6.0] - 2016-12-10
 ### Added
