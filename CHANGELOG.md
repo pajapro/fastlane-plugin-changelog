@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed:
+- Fix stamp_changelog action
 
 ## [0.6.0] - 2015-12-10
 ### Added
