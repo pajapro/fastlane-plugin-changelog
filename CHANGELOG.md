@@ -3,7 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-### Fixed:
+
+## [0.6.2] - 2016-02-12
 - Properly escape section identifiers [PR #18](https://github.com/pajapro/fastlane-plugin-changelog/pull/18) by [PromptWorks](https://www.promptworks.com/)
 
 ## [0.6.1] - 2016-01-17
@@ -56,3 +57,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [0.5.1]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.5.0...v0.5.1
 [0.6.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.5.1...v0.6.0
 [0.6.1]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.6.0...v0.6.1
+[0.6.2]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.6.1...v0.6.2
