@@ -11,7 +11,7 @@ module Fastlane
         UI.error("CHANGELOG.md at path '#{changelog_path}' does not exist") unless File.exist?(changelog_path)
 
         section_identifier = params[:section_identifier] unless params[:section_identifier].to_s.empty?
-        escaped_section_identifier = section_identifier[/\[(.*?)\]/, 1]
+        escaped_section_identifier = Regexp.escape(section_identifier[/\[(.*?)\]/, 1])
 
         excluded_markdown_elements = params[:excluded_markdown_elements]
 

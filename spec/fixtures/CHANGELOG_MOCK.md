@@ -67,7 +67,7 @@ both "open" and "closed" source projects equally.
 ### Deprecated
 - Obsolete contact screen
 
-## [0.0.5] - 2014-08-09
+## [0.0.5 (rc1)] - 2014-08-09
 ### Added
 - Markdown links to version tags on release headings.
 - Unreleased section to gather unreleased changes and encourage note
