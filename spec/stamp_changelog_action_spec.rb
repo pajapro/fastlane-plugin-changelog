@@ -1,7 +1,7 @@
 describe Fastlane::Actions::StampChangelogAction do
   describe 'Stamp CHANGELOG.md action' do
-    let (:changelog_mock_path) { './spec/fixtures/CHANGELOG_MOCK.md' }
-    let (:changelog_mock_path_hook) { './spec/fixtures/CHANGELOG_MOCK.md' }
+    let (:changelog_mock_path) { './fastlane-plugin-changelog/spec/fixtures/CHANGELOG_MOCK.md' }
+    let (:changelog_mock_path_hook) { './fastlane-plugin-changelog/spec/fixtures/CHANGELOG_MOCK.md' }
     let (:updated_section_identifier) { '12.34.56' }
 
     before(:each) do
