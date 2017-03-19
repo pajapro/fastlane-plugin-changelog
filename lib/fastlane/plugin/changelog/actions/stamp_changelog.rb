@@ -59,12 +59,12 @@ module Fastlane
           previous_tag = ""
           previous_previous_tag = ""
 
-          if last_line.include? ('https://github.com') # GitHub uses compare/olderTag...newerTag structure
+          if last_line.include? 'https://github.com' # GitHub uses compare/olderTag...newerTag structure
             previous_previous_tag = %r{(?<=compare\/)(.*)?(?=\.{3})}.match(last_line)
             previous_tag = /(?<=\.{3})(.*)?/.match(last_line)
-          elsif last_line.include? ('https://bitbucket.org') # Bitbucket uses compare/newerTag..olderTag structure
+          elsif last_line.include? 'https://bitbucket.org' # Bitbucket uses compare/newerTag..olderTag structure
             previous_tag = %r{(?<=compare\/)(.*)?(?=\.{2})}.match(last_line)
-            previous_previous_tag = /(?<=\.{2})(.*)?/.match(last_line)            
+            previous_previous_tag = /(?<=\.{2})(.*)?/.match(last_line)
           end
 
           last_line.sub!(previous_tag.to_s, git_tag) # Replace previous tag with new

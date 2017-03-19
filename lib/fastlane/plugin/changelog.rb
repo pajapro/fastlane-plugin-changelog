@@ -31,11 +31,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
             # Create a link for tag comparison
             if repo_url.start_with?('https://github.com')
               output = DEFAULT_CHANGELOG + "\n\n[Unreleased]: #{repo_url}/compare/master...HEAD"
-              write_to_changelog(output)  
+              write_to_changelog(output)
             elsif repo_url.start_with?('https://bitbucket.org')
               output = DEFAULT_CHANGELOG + "\n\n[Unreleased]: #{repo_url}/compare/master..HEAD"
               write_to_changelog(output)
-            else 
+            else
               FastlaneCore::UI.error('Unknown repository host')
               FastlaneCore::UI.message('Creating CHANGELOG.md without links for comparing tags')
               write_to_changelog(DEFAULT_CHANGELOG)
