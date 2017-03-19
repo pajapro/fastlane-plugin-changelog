@@ -1,7 +1,7 @@
 describe Fastlane::Actions::UpdateChangelogAction do
   describe 'Update CHANGELOG.md action' do
-    let (:changelog_mock_path) { './../spec/fixtures/CHANGELOG_MOCK.md' }
-    let (:changelog_mock_path_hook) { './../spec/fixtures/CHANGELOG_MOCK.md' }
+    let (:changelog_mock_path) { './fixtures/CHANGELOG_MOCK.md' }
+    let (:changelog_mock_path_hook) { './fixtures/CHANGELOG_MOCK.md' }
     let (:updated_section_identifier) { '12.34.56' }
     let (:existing_section_identifier) { '[0.0.5]' }
 

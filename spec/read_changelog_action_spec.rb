@@ -1,6 +1,6 @@
 describe Fastlane::Actions::ReadChangelogAction do
   describe 'Read CHANGELOG.md action' do
-    let (:changelog_mock_path) { "./../spec/fixtures/CHANGELOG_MOCK.md" }
+    let (:changelog_mock_path) { "./fixtures/CHANGELOG_MOCK.md" }
     let (:existing_section_identifier) { '[0.0.5 (rc1)]' }
 
     it 'reads content of [Unreleased] section' do
