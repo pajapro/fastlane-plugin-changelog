@@ -19,8 +19,10 @@ module Fastlane
 
         section_content = ""
         found_section = false
+        
         puts "CHANGELOG.md path #{changelog_path}"
         puts "CHANGELOG.md directory #{Dir.pwd}"
+
         File.open(changelog_path, "r") do |file|
           file.each_line do |line|
             if found_section
