@@ -1,6 +1,6 @@
 describe Fastlane::Actions::EmojifyChangelogAction do
   describe 'Emojify output of read_changelog action' do
-    let (:changelog_mock_path) { "./spec/fixtures/CHANGELOG_MOCK.md" }
+    let (:changelog_mock_path) { "./../spec/fixtures/CHANGELOG_MOCK.md" }
     let (:existing_section_identifier) { '[0.0.6]' }
 
     it 'emojify the content of specific section' do
