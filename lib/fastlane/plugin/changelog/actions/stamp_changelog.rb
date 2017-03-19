@@ -56,14 +56,22 @@ module Fastlane
         if !git_tag.nil? && !git_tag.empty?
           last_line = file_content.lines.last
           previous_section_name = last_line[/\[(.*?)\]/, 1]
-          previous_previous_tag = %r{(?<=compare\/)(.*)?(?=\.{3})}.match(last_line)
-          previous_tag = /(?<=\.{3})(.*)?/.match(last_line)
+          previous_tag = ""
+          previous_previous_tag = ""
+
+          if last_line.include? ('https://github.com') # GitHub uses compare/olderTag...newerTag structure
+            previous_previous_tag = %r{(?<=compare\/)(.*)?(?=\.{3})}.match(last_line)
+            previous_tag = /(?<=\.{3})(.*)?/.match(last_line)
+          elsif last_line.include? ('https://bitbucket.org') # Bitbucket uses compare/newerTag..olderTag structure
+            previous_tag = %r{(?<=compare\/)(.*)?(?=\.{2})}.match(last_line)
+            previous_previous_tag = /(?<=\.{2})(.*)?/.match(last_line)            
+          end
 
           last_line.sub!(previous_tag.to_s, git_tag) # Replace previous tag with new
           last_line.sub!(previous_previous_tag.to_s, previous_tag.to_s) # Replace previous-previous tag with previous
           last_line.sub!(previous_section_name.to_s, section_identifier) # Replace section identifier
 
-          UI.message("Created link to Github tags diff")
+          UI.message("Created a link for comparison between #{previous_tag} and #{git_tag} tag")
 
           file_content.concat(last_line)
         end
