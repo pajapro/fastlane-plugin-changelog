@@ -34,6 +34,10 @@ Lint/HandleExceptions:
 Lint/UnusedBlockArgument:
   Enabled: false
 
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+
 # Needed for $verbose
 Style/GlobalVars:
   Enabled: false
