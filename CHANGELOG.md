@@ -4,8 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.0] - 2017-03-19
 ### Added:
-- Support for Bitbucket tag comparison
+- Support for Bitbucket tag comparison [Issue #15](https://github.com/pajapro/fastlane-plugin-changelog/issues/15)
 
 ## [0.6.2] - 2017-02-12
 ### Fixed:
