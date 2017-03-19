@@ -1,11 +1,10 @@
 # os: osx # enable this if you need OS X support
 before_install:
-  # - gem install bundler
+  - gem install bundler
 before_script: 
-  # - bundle install
+  - bundle install
   - bundle exec danger
   - bundle exec rake
 language: ruby
 rvm:
   - 2.2
-sudo: required
