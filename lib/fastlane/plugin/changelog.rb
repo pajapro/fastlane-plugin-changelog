@@ -25,10 +25,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
           create_changelog
 
           FastlaneCore::UI.message('Changelog plugin can automaticaly create a link for comparison between two tags (see https://github.com/pajapro/fastlane-plugin-changelog#--stamp_changelog)')
-          if FastlaneCore::UI.confirm('Do you want to create links for comparing tags on Github?')
-            github_url = FastlaneCore::UI.input('Enter your Github URL (e.g.: https://github.com/fastlane/fastlane):')
-            output = DEFAULT_CHANGELOG + "\n\n[Unreleased]: #{github_url}/compare/master...HEAD"
-            write_to_changelog(output)
+          if FastlaneCore::UI.confirm('Do you want to create links for comparing tags?')
+            repo_url = FastlaneCore::UI.input('Enter your GitHub or Bitbucket repository URL (e.g.: https://github.com/owner/project or https://bitbucket.org/owner/project):')
+
+            # Create a link for tag comparison
+            if repo_url.start_with?('https://github.com')
+              output = DEFAULT_CHANGELOG + "\n\n[Unreleased]: #{repo_url}/compare/master...HEAD"
+              write_to_changelog(output)  
+            elsif repo_url.start_with?('https://bitbucket.org')
+              output = DEFAULT_CHANGELOG + "\n\n[Unreleased]: #{repo_url}/compare/master..HEAD"
+              write_to_changelog(output)
+            else 
+              FastlaneCore::UI.error('Unknown repository host')
+              FastlaneCore::UI.message('Creating CHANGELOG.md without links for comparing tags')
+              write_to_changelog(DEFAULT_CHANGELOG)
+            end
           else
             write_to_changelog(DEFAULT_CHANGELOG)
           end
