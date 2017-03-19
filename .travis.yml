@@ -3,7 +3,7 @@ before_install:
   - gem install bundler
 before_script: 
   - bundle install
-  - bundle exec danger
+  # - bundle exec danger
   - bundle exec rake
 language: ruby
 rvm:
