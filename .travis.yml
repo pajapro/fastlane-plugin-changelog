@@ -8,3 +8,4 @@ before_script:
 language: ruby
 rvm:
   - 2.2
+sudo: required
