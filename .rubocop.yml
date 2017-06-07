@@ -10,6 +10,12 @@ Style/BracesAroundHashParameters:
 Lint/UselessAssignment:
   Exclude:
     - '**/spec/**/*'
+    - '**/Dangerfile'
+    - '**/Rakefile'
+    - '**/Gemfile'
+    - '**/Gemfile.lock'
+    - '**/fastlane-plugin-changelog.gemspec'
+
 
 # We could potentially enable the 2 below:
 Style/IndentHash:
