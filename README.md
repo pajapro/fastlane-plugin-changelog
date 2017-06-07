@@ -31,7 +31,7 @@ read_changelog	# Reads the Unreleased section from CHANGELOG.md in your project'
 read_changelog(
   changelog_path: './custom_folder/CHANGELOG.md',	# Specify path to CHANGELOG.md
   section_identifier: '[Unreleased]',	# Specify what section to read
-  excluded_markdown_elements: '["###"]'	# Specify which markdown elements should be excluded
+  excluded_markdown_elements: ['-', '###']	# Specify which markdown elements should be excluded
 )
 ```
  
