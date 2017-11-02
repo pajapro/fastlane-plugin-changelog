@@ -10,7 +10,7 @@ describe Fastlane::Actions::EmojifyChangelogAction do
         emojify_changelog
      	end").runner.execute(:test)
 
-      expect(result).to eq("Added 🎁\n- New awesome feature\n\nChanged ↔️\n- Onboarding flow\n\nFixed ✅\n- Fix Markdown links\n\nRemoved 🚫\n- User tracking\n\nWork In Progress 🚧\n- Sales screen\n\nSecurity 🔒\n- Enable SSL pinning\n\nDeprecated 💨\n- Obsolete contact screen\n\n")
+      expect(result).to eq("Added 🎁\n- New awesome feature\n\nChanged ↔️\n- Onboarding flow\n\nFixed ✅\n- Fix Markdown links\n\nRemoved 🚫\n- User tracking\n\nWork In Progress 🚧\n- Sales screen\n\nSecurity 🔒\n- Enable SSL pinning\n\nDeprecated 💨\n- Obsolete contact screen")
     end
 
     # it 'reads content of [Unreleased] section and includes header 3 (###)' do
@@ -19,7 +19,7 @@ describe Fastlane::Actions::EmojifyChangelogAction do
     #    				   excluded_markdown_elements: '')
     #  	end").runner.execute(:test)
 
-    #   expect(result).to eq("### Added\n- New awesome feature\n\n")
+    #   expect(result).to eq("### Added\n- New awesome feature")
     # end
 
     # it 'reads content of [Unreleased] section and excludes list elements (-)' do
@@ -28,7 +28,7 @@ describe Fastlane::Actions::EmojifyChangelogAction do
     #    				   excluded_markdown_elements: '-')
     #  	end").runner.execute(:test)
 
-    #   expect(result).to eq("### Added\nNew awesome feature\n\n")
+    #   expect(result).to eq("### Added\nNew awesome feature")
     # end
 
     # it 'reads content of [Unreleased] section and excludes list elements (-) and header 3 (###)' do
@@ -37,7 +37,7 @@ describe Fastlane::Actions::EmojifyChangelogAction do
     #    				   excluded_markdown_elements: ['-', '###'])
     #  	end").runner.execute(:test)
 
-    #   expect(result).to eq("Added\nNew awesome feature\n\n")
+    #   expect(result).to eq("Added\nNew awesome feature")
     # end
   end
 end
