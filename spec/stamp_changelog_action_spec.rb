@@ -45,7 +45,7 @@ describe Fastlane::Actions::StampChangelogAction do
           read_changelog(changelog_path: '#{changelog_mock_path}')
         end").runner.execute(:test)
 
-      expect(read_result).to eq("\n")
+      expect(read_result).to eq("")
     end
 
     it 'rejects to stamp empty [Unreleased] section' do
