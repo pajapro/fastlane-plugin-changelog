@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Fixed:
-- Remove \n (newline) from read_changelog action's result.
+- Remove `\n` (newline) from `read_changelog` action's result.
 
 ## [0.7.0] - 2017-03-19
 ### Added:
