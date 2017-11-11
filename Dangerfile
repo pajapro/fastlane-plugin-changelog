@@ -10,7 +10,7 @@ warn("Big PR") if git.lines_of_code > 500
 # Request a CHANGELOG entry, and give an example
 has_app_changes = !git.modified_files.grep(/lib/).empty?
 if !git.modified_files.include?('CHANGELOG.md') && has_app_changes
-  fail("Please include a CHANGELOG entry to credit yourself! \nYou can find it at [CHANGELOG.md](https://github.com/pajapro/fastlane-plugin-changelog/blob/#{github.branch_for_head}/CHANGELOG.md).", :sticky => false)
+  fail("Please include a CHANGELOG entry to credit yourself! \nYou can find it at [CHANGELOG.md](https://github.com/pajapro/fastlane-plugin-changelog/blob/#{github.branch_for_head}/CHANGELOG.md).", sticky: false)
   markdown <<-MARKDOWN
 Here's an example of your CHANGELOG entry under [`[Unreleased]`](https://github.com/pajapro/fastlane-plugin-changelog/blob/#{github.branch_for_head}/CHANGELOG.md#unreleased) section:
 ```markdown
