@@ -10,7 +10,7 @@ module Fastlane
 
         # 2. Ensure there are changes in [Unreleased] section
         unreleased_section_content = Actions::ReadChangelogAction.run(changelog_path: changelog_path, section_identifier: UNRELEASED_IDENTIFIER, excluded_markdown_elements: ["###"])
-        if unreleased_section_content.eql?("\n")
+        if unreleased_section_content.eql?("")
           UI.important("WARNING: No changes in [Unreleased] section to stamp!")
         else
           section_identifier = params[:section_identifier] unless params[:section_identifier].to_s.empty?
