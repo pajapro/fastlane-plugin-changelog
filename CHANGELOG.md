@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed:
+- removes `\n` from changelog content
 
 ## [0.7.0] - 2017-03-19
 ### Added:
