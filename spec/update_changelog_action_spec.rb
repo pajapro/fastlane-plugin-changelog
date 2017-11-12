@@ -13,7 +13,7 @@ describe Fastlane::Actions::UpdateChangelogAction do
       File.open(changelog_mock_path_hook, 'w') { |f| f.write(@original_content) }
     end
 
-    it 'udpates [Unreleased] section identifier' do
+    it 'updates [Unreleased] section identifier' do
       # Read what's in [Unreleased]
       read_result = Fastlane::FastFile.new.parse("lane :test do
           read_changelog(changelog_path: '#{changelog_mock_path}')
@@ -34,7 +34,7 @@ describe Fastlane::Actions::UpdateChangelogAction do
       expect(read_result).to eq(post_update_read_result)
     end
 
-    it 'udpates specific section identifier' do
+    it 'updates specific section identifier' do
       # Read what's in [Unreleased]
       read_result = Fastlane::FastFile.new.parse("lane :test do
           read_changelog(changelog_path: '#{changelog_mock_path}',
