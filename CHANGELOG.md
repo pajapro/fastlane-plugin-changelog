@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+
 ## [0.8.0] - 2017-11-11
 ### Fixed:
 - Remove `\n` (newline) from `read_changelog` action's result.
