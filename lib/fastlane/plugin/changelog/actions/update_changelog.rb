@@ -9,20 +9,40 @@ module Fastlane
         escaped_section_identifier = section_identifier[/\[(.*?)\]/, 1]
 
         new_section_identifier = params[:updated_section_identifier] unless params[:updated_section_identifier].to_s.empty?
+        excluded_placeholder_line = params[:excluded_placeholder_line] unless params[:excluded_placeholder_line].to_s.empty?
 
         UI.message "Starting to update #{section_identifier} section of '#{changelog_path}'"
 
         # Read & update file content
         file_content = ""
+        found_identifying_section = false
+
         File.open(changelog_path, "r") do |file|
           line_separator = Helper::ChangelogHelper.get_line_separator(changelog_path)
           file.each_line do |line|
-            # Find line matching section identifier
-            if line =~ /\#{2}\s?\[#{escaped_section_identifier}\]/
-              found_identifying_section = true
+
+            # 3. Ignore placeholder line (if provided) within the updated section
+            if found_identifying_section && !excluded_placeholder_line.nil?
+              if isSectionLine(line)
+                found_identifying_section = false # Reached the end of section, hence stop reading
+              else
+                if line =~ /^#{excluded_placeholder_line}/
+                  next # Ignore placeholder line, don't output it
+                else 
+                  file_content.concat(line) # Output unmodified line
+                  next
+                end
+              end
             end
 
-            # Update section identifier (if found)
+            # 1. Find line matching section identifier
+            if line =~ /\#{2}\s?\[#{escaped_section_identifier}\]/
+              found_identifying_section = true
+            else
+              found_identifying_section = false
+            end
+
+            # 2. Update section identifier (if found)
             if !new_section_identifier.empty? && found_identifying_section
               section_name = section_identifier[/\[(.*?)\]/, 1]
 
@@ -44,8 +64,6 @@ module Fastlane
               next
             end
 
-            # TODO: implement updating of section content
-
             # Output read line
             file_content.concat(line)
           end
@@ -56,6 +74,10 @@ module Fastlane
         changelog.puts(file_content)
         changelog.close
         UI.success("Successfuly updated #{changelog_path}")
+      end
+
+      def self.isSectionLine(line)
+         line =~ /\#{2}\s?\[.*\]/
       end
 
       #####################################################
@@ -97,6 +119,11 @@ module Fastlane
                                        env_name: "FL_UPDATE_CHANGELOG_APPEND_DATE",
                                        description: "Appends the current date in YYYY-MM-DD format after the section identifier",
                                        default_value: true,
+                                       optional: true),
+          FastlaneCore::ConfigItem.new(key: :excluded_placeholder_line,
+                                       env_name: "FL_UPDATE_CHANGELOG_EXCLUDED_PLACEHOLDER_LINE",
+                                       description: "Placeholder string to be ignored in updated section",
+                                       is_string: true,
                                        optional: true)
           # FastlaneCore::ConfigItem.new(key: :updated_section_content,
           #                              env_name: "FL_UPDATE_CHANGELOG_UPDATED_SECTION_CONTENT",
