@@ -14,12 +14,12 @@ describe Fastlane::Actions::UpdateChangelogAction do
     end
 
     it 'updates [Unreleased] section identifier' do
-      # Read what's in [Unreleased]
+      # Read what's in [Unreleased] section
       read_result = Fastlane::FastFile.new.parse("lane :test do
           read_changelog(changelog_path: '#{changelog_mock_path}')
         end").runner.execute(:test)
 
-      # Update [Unreleased] with another section identifier
+      # Update [Unreleased] section identifier with new one
       Fastlane::FastFile.new.parse("lane :test do
        	update_changelog(changelog_path: '#{changelog_mock_path}',
                           updated_section_identifier: '#{updated_section_identifier}')
@@ -35,13 +35,13 @@ describe Fastlane::Actions::UpdateChangelogAction do
     end
 
     it 'updates specific section identifier' do
-      # Read what's in [Unreleased]
+      # Read what's in specified section
       read_result = Fastlane::FastFile.new.parse("lane :test do
           read_changelog(changelog_path: '#{changelog_mock_path}',
                          section_identifier: '#{existing_section_identifier}')
         end").runner.execute(:test)
 
-      # Update given section identifier with another one
+      # Update given section identifier with new one
       Fastlane::FastFile.new.parse("lane :test do
           update_changelog(changelog_path: '#{changelog_mock_path}',
                            section_identifier: '#{existing_section_identifier}',
