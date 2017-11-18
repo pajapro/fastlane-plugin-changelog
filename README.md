@@ -56,6 +56,8 @@ stamp_changelog(
 )
 ```
 
+🤖 Moreover, if you are using [danger-changelog](https://github.com/dblock/danger-changelog) plugin, you can leverage `placeholder_line` string paramater. `placeholder_line` string will be ignored when stamping an existing section _and_ copied into `[Unreleased]` section. This will help contributors to your project to see where changelog changes should be added (see [feature request](https://github.com/pajapro/fastlane-plugin-changelog/issues/22)). 
+
 ### 😁 emojify_changelog
 Emojifies the output of `read_changelog` action. When you share changelog with the rest of your team on e.g.: Slack channel, it's nice to sprinkle your subsections with a bit of visuals so it immediately catches eyes of your teammates. `emojify_changelog` uses the output of `read_changelog` action to append an emoji to known subsections, for example:
 
