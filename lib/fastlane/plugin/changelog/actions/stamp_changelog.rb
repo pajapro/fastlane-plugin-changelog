@@ -27,7 +27,8 @@ module Fastlane
         Actions::UpdateChangelogAction.run(changelog_path: changelog_path,
                                           section_identifier: UNRELEASED_IDENTIFIER,
                                           updated_section_identifier: section_identifier,
-                                          append_date: stamp_date)
+                                          append_date: stamp_date,
+                                          excluded_placeholder_line: placeholder_line)
 
         file_content = ""
 
