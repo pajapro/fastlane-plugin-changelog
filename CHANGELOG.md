@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.9.0] - 2017-11-25
 - Add `placeholder_line` param to `stamp_changelog` action ([feature request #22](https://github.com/pajapro/fastlane-plugin-changelog/issues/22))
 
 ## [0.8.0] - 2017-11-11
@@ -70,3 +72,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [0.6.2]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.6.1...v0.6.2
 [0.7.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.6.2...v0.7.0
 [0.7.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.7.0...v0.8.0
+[0.8.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.8.0...v0.9.0
