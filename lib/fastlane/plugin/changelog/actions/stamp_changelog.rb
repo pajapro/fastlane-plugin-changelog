@@ -16,17 +16,19 @@ module Fastlane
           section_identifier = params[:section_identifier] unless params[:section_identifier].to_s.empty?
           stamp_date = params[:stamp_date]
           git_tag = params[:git_tag]
+          placeholder_line = params[:placeholder_line]
 
-          stamp(changelog_path, section_identifier, stamp_date, git_tag)
+          stamp(changelog_path, section_identifier, stamp_date, git_tag, placeholder_line)
         end
       end
 
-      def self.stamp(changelog_path, section_identifier, stamp_date, git_tag)
+      def self.stamp(changelog_path, section_identifier, stamp_date, git_tag, placeholder_line)
         # 1. Update [Unreleased] section with given identifier
         Actions::UpdateChangelogAction.run(changelog_path: changelog_path,
                                           section_identifier: UNRELEASED_IDENTIFIER,
                                           updated_section_identifier: section_identifier,
-                                          append_date: stamp_date)
+                                          append_date: stamp_date,
+                                          excluded_placeholder_line: placeholder_line)
 
         file_content = ""
 
@@ -37,7 +39,14 @@ module Fastlane
             # Find the first section identifier
             if !inserted_unreleased && line =~ /\#{2}\s?\[(.*?)\]/
               unreleased_section = "## [Unreleased]"
-              line = "#{unreleased_section}\n\n#{line}"
+
+              # Insert placeholder line (if provided)
+              if !placeholder_line.nil? && !placeholder_line.empty?
+                line = "#{unreleased_section}\n#{placeholder_line}\n\n#{line}"
+              else 
+                line = "#{unreleased_section}\n\n#{line}"
+              end  
+              
               inserted_unreleased = true
 
               UI.message("Created [Unreleased] placeholder section")
@@ -116,6 +125,11 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :git_tag,
                                        env_name: "FL_STAMP_CHANGELOG_GIT_TAG",
                                        description: "The git tag associated with this section",
+                                       is_string: true,
+                                       optional: true),
+          FastlaneCore::ConfigItem.new(key: :placeholder_line,
+                                       env_name: "FL_STAMP_CHANGELOG_PLACEHOLDER_LINE",
+                                       description: "The placeholder line to be excluded in stamped section and added to [Unreleased] section",
                                        is_string: true,
                                        optional: true)
         ]
