@@ -108,7 +108,7 @@ module Fastlane
       def self.available_options
         [
           FastlaneCore::ConfigItem.new(key: :changelog_path,
-                                       env_name: "FL_STAMP_CHANGELOG_PATH_TO_CHANGELOG",
+                                       env_name: "FL_CHANGELOG_PATH",
                                        description: "The path to your project CHANGELOG.md",
                                        is_string: true,
                                        default_value: "./CHANGELOG.md",
