@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
       # Generates CHANGELOG.md in project root
       def self.generate_changelog
-        if FastlaneCore::UI.confirm('Your project folder does not have CHANGELOG.md - do you want to create one now?')
+        if FastlaneCore::UI.confirm('Do you want to generate default CHANGELOG.md in the project root?')
             FileUtils.touch 'CHANGELOG.md'
             generate_comparison_link
         else 
