@@ -6,7 +6,7 @@ module Fastlane
       def self.run(params)
         # 1. Ensure CHANGELOG.md exists
         changelog_path = params[:changelog_path] unless params[:changelog_path].to_s.empty?
-        UI.error("CHANGELOG.md at path '#{changelog_path}' does not exist") unless File.exist?(changelog_path)
+        changelog_path = Helper::ChangelogHelper.ensure_changelog_exists(changelog_path)
 
         # 2. Ensure there are changes in [Unreleased] section
         unreleased_section_content = Actions::ReadChangelogAction.run(changelog_path: changelog_path, section_identifier: UNRELEASED_IDENTIFIER, excluded_markdown_elements: ["###"])
@@ -108,7 +108,7 @@ module Fastlane
       def self.available_options
         [
           FastlaneCore::ConfigItem.new(key: :changelog_path,
-                                       env_name: "FL_STAMP_CHANGELOG_PATH_TO_CHANGELOG",
+                                       env_name: "FL_CHANGELOG_PATH",
                                        description: "The path to your project CHANGELOG.md",
                                        is_string: true,
                                        default_value: "./CHANGELOG.md",
