@@ -2,7 +2,6 @@ require 'fastlane/plugin/changelog/version'
 
 module Fastlane
   module Changelog
-
     # Return all .rb files inside the "actions" and "helper" directory
     def self.all_classes
       Dir[File.expand_path('**/{actions,helper}/*.rb', File.dirname(__FILE__))]

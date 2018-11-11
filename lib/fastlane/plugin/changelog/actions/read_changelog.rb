@@ -8,7 +8,7 @@ module Fastlane
     class ReadChangelogAction < Action
       def self.run(params)
         changelog_path = params[:changelog_path] unless params[:changelog_path].to_s.empty?
-        Helper::ChangelogHelper.ensure_changelog_exists(changelog_path)
+        changelog_path = Helper::ChangelogHelper.ensure_changelog_exists(changelog_path)
 
         section_identifier = params[:section_identifier] unless params[:section_identifier].to_s.empty?
         escaped_section_identifier = Regexp.escape(section_identifier[/\[(.*?)\]/, 1])

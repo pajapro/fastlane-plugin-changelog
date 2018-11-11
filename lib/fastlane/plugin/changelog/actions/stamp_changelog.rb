@@ -6,7 +6,7 @@ module Fastlane
       def self.run(params)
         # 1. Ensure CHANGELOG.md exists
         changelog_path = params[:changelog_path] unless params[:changelog_path].to_s.empty?
-        Helper::ChangelogHelper.ensure_changelog_exists(changelog_path)
+        changelog_path = Helper::ChangelogHelper.ensure_changelog_exists(changelog_path)
 
         # 2. Ensure there are changes in [Unreleased] section
         unreleased_section_content = Actions::ReadChangelogAction.run(changelog_path: changelog_path, section_identifier: UNRELEASED_IDENTIFIER, excluded_markdown_elements: ["###"])
