@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Your awesome new feature'
 
+    # TODO: ❗️ Add unit tests for methods in this class
     class ChangelogHelper
 
       # Ensures CHANGELOG.md exists at given path. If not, offers to create a default one. 
