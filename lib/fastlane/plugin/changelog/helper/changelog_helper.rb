@@ -12,6 +12,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Your awesome new feature'
 
     class ChangelogHelper
+
+      # Ensures CHANGELOG.md exists at given path. If not, offers to create a default one.
+      def self.ensure_changelog_exists(path)
+        if File.exist?(path)
+          FastlaneCore::UI.success "Found CHANGELOG.md at #{path}"
+        else 
+          generate_changelog  
+        end
+      end
+
       # Generates CHANGELOG.md in project root
       def self.generate_changelog
         if FastlaneCore::UI.confirm('Your project folder does not have CHANGELOG.md - do you want to create one now?')
