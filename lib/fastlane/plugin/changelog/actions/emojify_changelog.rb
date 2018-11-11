@@ -11,7 +11,7 @@ module Fastlane
         UI.message "Emojifying the output of read_changelog action"
 
         read_changelog_output = lane_context[SharedValues::READ_CHANGELOG_SECTION_CONTENT]
-        changelog_path = lane_context[SharedValues::READ_CHANGELOG_CHANGELOG_PATH]
+        changelog_path = lane_context[SharedValues::FL_CHANGELOG_PATH]
 
         line_separator = Helper::ChangelogHelper.get_line_separator(changelog_path)
         emojified_content = ""
