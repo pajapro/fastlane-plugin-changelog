@@ -6,7 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.10.0] - 2018-11-11
 ### Fixed:
-- Remove prompt to create `CHANGELOG.md` in project root, while using custom changelog_path param ([Issue #28](https://github.com/pajapro/fastlane-plugin-changelog/issues/28) and [Issue #23](https://github.com/pajapro/fastlane-plugin-changelog/issues/23))
+- Remove prompt to create `CHANGELOG.md` in project root, while using custom `changelog_path` param ([Issue #28](https://github.com/pajapro/fastlane-plugin-changelog/issues/28) and [Issue #23](https://github.com/pajapro/fastlane-plugin-changelog/issues/23))
 
 ## [0.9.0] - 2017-11-25
 - Add `placeholder_line` param to `stamp_changelog` action ([feature request #22](https://github.com/pajapro/fastlane-plugin-changelog/issues/22))
