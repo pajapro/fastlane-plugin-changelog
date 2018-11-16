@@ -64,7 +64,6 @@ module Fastlane
         # 3. Create link to git tags diff
         if !git_tag.nil? && !git_tag.empty?
           last_line = file_content.lines.last
-          previous_section_name = last_line[/\[(.*?)\]/, 1]
           previous_tag = ""
           previous_previous_tag = ""
 
