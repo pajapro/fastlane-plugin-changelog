@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.11.0] - 2018-11-16
+### Fixed:
+- Bug when creating git tags comparison link ([Issue #32](https://github.com/pajapro/fastlane-plugin-changelog/issues/32)) 
+
 ## [0.10.0] - 2018-11-11
 ### Fixed:
 - Remove prompt to create `CHANGELOG.md` in project root, while using custom `changelog_path` param ([Issue #28](https://github.com/pajapro/fastlane-plugin-changelog/issues/28) and [Issue #23](https://github.com/pajapro/fastlane-plugin-changelog/issues/23))
@@ -78,3 +82,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [0.8.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.7.0...v0.8.0
 [0.9.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.8.0...v0.9.0
 [0.10.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.9.0...v0.10.0
+[0.11.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.10.0...v0.11.0

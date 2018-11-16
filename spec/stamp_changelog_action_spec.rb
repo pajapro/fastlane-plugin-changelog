@@ -64,7 +64,7 @@ describe Fastlane::Actions::StampChangelogAction do
           end").runner.execute(:test)
     end
 
-    it 'creates tags comparion GitHub link', :focus => true do
+    it 'creates tags comparion GitHub link with prefix' do
       # Stamp [Unreleased] with given section identifier
       Fastlane::FastFile.new.parse("lane :test do
           stamp_changelog(changelog_path: '#{changelog_mock_path}',

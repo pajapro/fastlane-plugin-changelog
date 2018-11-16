@@ -43,10 +43,10 @@ module Fastlane
               # Insert placeholder line (if provided)
               if !placeholder_line.nil? && !placeholder_line.empty?
                 line = "#{unreleased_section}\n#{placeholder_line}\n\n#{line}"
-              else 
+              else
                 line = "#{unreleased_section}\n\n#{line}"
-              end  
-              
+              end
+
               inserted_unreleased = true
 
               UI.message("Created [Unreleased] placeholder section")
@@ -61,10 +61,9 @@ module Fastlane
           end
         end
 
-        # 3. Create link to Github tags diff
+        # 3. Create link to git tags diff
         if !git_tag.nil? && !git_tag.empty?
           last_line = file_content.lines.last
-          previous_section_name = last_line[/\[(.*?)\]/, 1]
           previous_tag = ""
           previous_previous_tag = ""
 
@@ -76,9 +75,16 @@ module Fastlane
             previous_previous_tag = /(?<=\.{2})(.*)?/.match(last_line)
           end
 
-          last_line.sub!(previous_tag.to_s, git_tag) # Replace previous tag with new
-          last_line.sub!(previous_previous_tag.to_s, previous_tag.to_s) # Replace previous-previous tag with previous
-          last_line.sub!(previous_section_name.to_s, section_identifier) # Replace section identifier
+          # Replace section identifier
+          cleared_git_tag = git_tag.delete('[a-z]')
+          cleared_previous_git_tag = previous_tag.to_s.delete('[a-z]')
+          last_line.sub!("[#{cleared_previous_git_tag}]", "[#{cleared_git_tag}]")
+
+          # Replace previous-previous tag with previous
+          last_line.sub!(previous_previous_tag.to_s, previous_tag.to_s)
+
+          # Replace previous tag with new
+          last_line.sub!("..#{previous_tag}", "..#{git_tag}")
 
           UI.message("Created a link for comparison between #{previous_tag} and #{git_tag} tag")
 

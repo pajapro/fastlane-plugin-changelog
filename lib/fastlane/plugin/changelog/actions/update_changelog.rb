@@ -20,15 +20,14 @@ module Fastlane
         File.open(changelog_path, "r") do |file|
           line_separator = Helper::ChangelogHelper.get_line_separator(changelog_path)
           file.each_line do |line|
-
             # 3. Ignore placeholder line (if provided) within the updated section
             if found_identifying_section && !excluded_placeholder_line.nil?
-              if isSectionLine(line)
+              if is_section_line(line)
                 found_identifying_section = false # Reached the end of section, hence stop reading
               else
                 if line =~ /^#{excluded_placeholder_line}/
                   next # Ignore placeholder line, don't output it
-                else 
+                else
                   file_content.concat(line) # Output unmodified line
                   next
                 end
@@ -76,8 +75,8 @@ module Fastlane
         UI.success("Successfuly updated #{changelog_path}")
       end
 
-      def self.isSectionLine(line)
-         line =~ /\#{2}\s?\[.*\]/
+      def self.is_section_line(line)
+        line =~ /\#{2}\s?\[.*\]/
       end
 
       #####################################################

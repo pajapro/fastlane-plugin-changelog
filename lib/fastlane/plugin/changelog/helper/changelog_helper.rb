@@ -11,10 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Your awesome new feature'
 
-    # TODO: ❗️ Add unit tests for methods in this class
+    # TODO: Add unit tests for methods in this class
     class ChangelogHelper
-
-      # Ensures CHANGELOG.md exists at given path. If not, offers to create a default one. 
+      # Ensures CHANGELOG.md exists at given path. If not, offers to create a default one.
       # Returns path to CHANGELOG.md to be used
       def self.ensure_changelog_exists(path)
         if File.exist?(path)
@@ -30,15 +29,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
       # Generates CHANGELOG.md in project root
       def self.generate_changelog
         if FastlaneCore::UI.confirm('Do you want to generate default CHANGELOG.md in the project root?')
-            FileUtils.touch 'CHANGELOG.md'
-            generate_comparison_link
-        else 
-            FastlaneCore::UI.error("Cannot continue without CHANGELOG.md file")
+          FileUtils.touch 'CHANGELOG.md'
+          generate_comparison_link
+        else
+          FastlaneCore::UI.error("Cannot continue without CHANGELOG.md file")
         end
       end
 
       # Generates link for tag comparison
-      def self.generate_comparison_link     
+      def self.generate_comparison_link
         FastlaneCore::UI.message('Changelog plugin can automaticaly create a link for comparison between two tags (see https://github.com/pajapro/fastlane-plugin-changelog#--stamp_changelog)')
         if FastlaneCore::UI.confirm('Do you want to create links for comparing tags?')
           repo_url = FastlaneCore::UI.input('Enter your GitHub or Bitbucket repository URL (e.g.: https://github.com/owner/project or https://bitbucket.org/owner/project):')
@@ -68,7 +67,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
         File.open(CHANGELOG_PATH, 'w') { |f| f.write(changelog) }
         FastlaneCore::UI.success('Successfuly created CHANGELOG.md')
       end
-      
+
       def self.get_line_separator(file_path)
         f = File.open(file_path)
         enum = f.each_char
