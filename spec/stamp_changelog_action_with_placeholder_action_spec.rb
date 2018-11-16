@@ -30,7 +30,6 @@ describe Fastlane::Actions::StampChangelogAction do
     end
 
     context "stamps [Unreleased] section with given identifier" do
-
       it 'creates a new section identifier with provided identifier' do
         # Read what's in [Unreleased]
         read_result = Fastlane::FastFile.new.parse("lane :test do
@@ -65,7 +64,7 @@ describe Fastlane::Actions::StampChangelogAction do
           end").runner.execute(:test)
 
         expect(read_result).to eq("")
-      end    
+      end
 
       it 'excludes placeholder line' do
         # Stamp [Unreleased] with given section identifier and excludes placeholder line
@@ -73,8 +72,8 @@ describe Fastlane::Actions::StampChangelogAction do
             stamp_changelog(changelog_path: '#{changelog_mock_path}',
                             section_identifier: '#{updated_section_identifier}',
                             placeholder_line: '#{placeholder_line}')
-            end").runner.execute(:test)      
-        
+            end").runner.execute(:test)
+
         # Read updated section
         post_stamp_read_result = Fastlane::FastFile.new.parse("lane :test do
             read_changelog(changelog_path: '#{changelog_mock_path}',
@@ -90,8 +89,8 @@ describe Fastlane::Actions::StampChangelogAction do
             stamp_changelog(changelog_path: '#{changelog_mock_path}',
                             section_identifier: '#{updated_section_identifier}',
                             placeholder_line: '#{placeholder_line}')
-            end").runner.execute(:test)      
-        
+            end").runner.execute(:test)
+
         # Read updated section
         read_result = Fastlane::FastFile.new.parse("lane :test do
             read_changelog(changelog_path: '#{changelog_mock_path}')
@@ -107,8 +106,8 @@ describe Fastlane::Actions::StampChangelogAction do
             stamp_changelog(changelog_path: '#{changelog_mock_path}',
                             section_identifier: '#{updated_section_identifier}',
                             placeholder_line: '#{placeholder_line}')
-            end").runner.execute(:test)      
-        
+            end").runner.execute(:test)
+
         # Read updated section
         stamped_section_read_result = Fastlane::FastFile.new.parse("lane :test do
             read_changelog(changelog_path: '#{changelog_mock_path}',

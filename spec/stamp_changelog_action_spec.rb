@@ -75,6 +75,5 @@ describe Fastlane::Actions::StampChangelogAction do
       modified_file = File.read(changelog_mock_path_hook)
       expect(modified_file.lines.last).to eq("[12.34.56]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...v12.34.56\n")
     end
-
   end
 end
