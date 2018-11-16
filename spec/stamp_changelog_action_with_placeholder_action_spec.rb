@@ -123,6 +123,18 @@ describe Fastlane::Actions::StampChangelogAction do
         expect(stamped_section_read_result =~ /^#{placeholder_line}/).to be_falsey
         expect(unreleased_section_read_result).to eq("* Your contribution here.")
       end
-    end    
+    end
+
+    it 'creates tags comparion GitHub link without prefix' do
+      # Stamp [Unreleased] with given section identifier
+      Fastlane::FastFile.new.parse("lane :test do
+          stamp_changelog(changelog_path: '#{changelog_mock_path}',
+                          section_identifier: '3.11.1',
+                          git_tag: '3.11.1')
+          end").runner.execute(:test)
+
+      modified_file = File.read(changelog_mock_path_hook)
+      expect(modified_file.lines.last).to eq("[3.11.1]: https://github.com/olivierlacan/keep-a-changelog/compare/3.11.0...3.11.1\n")
+    end
   end
 end
