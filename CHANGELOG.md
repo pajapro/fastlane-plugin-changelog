@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added:
+- Support for gitlab projects
+- Support for diffs with `[Unreleased]` tags (and `HEAD` reference)
 
 ## [0.12.0] - 2018-11-16
 ### Fixed:
@@ -83,3 +86,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [0.9.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.8.0...v0.9.0
 [0.10.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.9.0...v0.10.0
 [0.12.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.10.0...v0.12.0
+[Unreleased]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.12.0...HEAD
