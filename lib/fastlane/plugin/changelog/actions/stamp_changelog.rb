@@ -69,7 +69,7 @@ module Fastlane
           previous_tag = ""
           previous_previous_tag = ""
 
-          if last_line.include? 'https://github.com' or last_line.include? 'http://gitlab.' # GitHub and Gitlab use compare/olderTag...newerTag structure
+          if last_line.include? 'https://github.com' or last_line.include? 'http://gitlab.' or last_line.include? 'https://gitlab.com' # GitHub and Gitlab use compare/olderTag...newerTag structure
             git = 1
             previous_previous_tag = %r{(?<=compare\/)(.*)?(?=\.{3})}.match(last_line).to_s
             previous_tag = %r{(?<=\.{3})(.*)?}.match(last_line)
