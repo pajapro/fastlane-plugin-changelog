@@ -70,22 +70,21 @@ module Fastlane
           previous_previous_tag = ""
 
           if last_line.include? 'https://github.com' or last_line.include? 'http://gitlab.' or last_line.include? 'https://gitlab.com' # GitHub and Gitlab use compare/olderTag...newerTag structure
-            git = 1
+            git = 'github/gitlab'
             previous_previous_tag = %r{(?<=compare\/)(.*)?(?=\.{3})}.match(last_line).to_s
             previous_tag = %r{(?<=\.{3})(.*)?}.match(last_line)
           elsif last_line.include? 'https://bitbucket.org' # Bitbucket uses compare/newerTag..olderTag structure
-            git = 2
+            git = 'bitbucket'
             previous_previous_tag = %r{(?<=\.{2})(.*)?}.match(last_line).to_s
             previous_tag = %r{(?<=compare\/)(.*)?(?=\.{2})}.match(last_line)
           end
 
           if last_line.include? UNRELEASED_IDENTIFIER
-            if git == 1
+            if git == 'github/gitlab'
               last_line.sub!("...HEAD", "...#{git_tag}")
               last_line.sub!(UNRELEASED_IDENTIFIER, "[#{section_identifier}]")
 
               file_content.concat(last_line)
-
 
               # Using the modified line to create a new [Unreleased] line
               last_line.sub!("...#{git_tag}", "...HEAD")
@@ -94,18 +93,23 @@ module Fastlane
 
               file_content.concat(last_line)
 
-            elsif git == 2
+            elsif git == 'bitbucket'
               last_line.sub!("HEAD...", "#{git_tag}...")
               last_line.sub!(UNRELEASED_IDENTIFIER, "[#{section_identifier}]")
 
               file_content.concat(last_line)
 
+              # Using the modified line to create a new [Unreleased] line
               last_line.sub!("#{git_tag}...", "HEAD...")
               last_line.sub!("[#{section_identifier}]", UNRELEASED_IDENTIFIER)
               last_line.sub!("...#{previous_previous_tag}", "...#{git_tag}")
 
               file_content.concat(last_line)
             end
+
+            UI.message("Updated the link for comparison between #{previous_previous_tag} and #{git_tag} tag")
+            UI.message("Created a link for comparison between #{git_tag} and HEAD tag")
+
           else
             file_content.concat(last_line)
 
@@ -124,9 +128,6 @@ module Fastlane
 
             file_content.concat(last_line)
           end
-
-          UI.message("Updated the link for comparison between #{previous_previous_tag} and #{git_tag} tag")
-          UI.message("Created a link for comparison between #{git_tag} and HEAD tag")
         else
           file_content.concat(last_line)
         end
