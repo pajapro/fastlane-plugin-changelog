@@ -77,18 +77,21 @@ module Fastlane
           previous_tag = ""
           previous_previous_tag = ""
 
+          github_tag = 'github/gitlab'
+          bitbucket_tag = 'bitbucket'
+
           if last_line.include? 'https://github.com' or last_line.include? 'http://gitlab.' or last_line.include? 'https://gitlab.com' # GitHub and Gitlab use compare/olderTag...newerTag structure
-            git = 'github/gitlab'
+            git = github_tag
             previous_previous_tag = %r{(?<=compare\/)(.*)?(?=\.{3})}.match(last_line).to_s
             previous_tag = %r{(?<=\.{3})(.*)?}.match(last_line)
           elsif last_line.include? 'https://bitbucket.org' # Bitbucket uses compare/newerTag..olderTag structure
-            git = 'bitbucket'
+            git = bitbucket_tag
             previous_previous_tag = %r{(?<=\.{2})(.*)?}.match(last_line).to_s
             previous_tag = %r{(?<=compare\/)(.*)?(?=\.{2})}.match(last_line)
           end
 
           if last_line.include? UNRELEASED_IDENTIFIER
-            if git == 'github/gitlab'
+            if git == github_tag
               last_line.sub!("...HEAD", "...#{git_tag}")
               last_line.sub!(UNRELEASED_IDENTIFIER, "[#{section_identifier}]")
 
@@ -101,7 +104,7 @@ module Fastlane
 
               file_content.concat(last_line)
 
-            elsif git == 'bitbucket'
+            elsif git == bitbucket_tag
               last_line.sub!("HEAD...", "#{git_tag}...")
               last_line.sub!(UNRELEASED_IDENTIFIER, "[#{section_identifier}]")
 
