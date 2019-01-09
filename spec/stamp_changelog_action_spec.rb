@@ -89,6 +89,7 @@ describe Fastlane::Actions::StampChangelogAction do
           end").runner.execute(:test)
 
       modified_file = File.read(changelog_mock_unreleased_path_hook)
+      expect(modified_file.lines.before_last).to eq("[12.34.56]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...v12.34.56")
       expect(modified_file.lines.last).to eq("[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v12.34.56...HEAD\n")
     end
   end
