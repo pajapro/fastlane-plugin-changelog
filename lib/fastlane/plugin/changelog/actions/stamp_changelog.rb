@@ -25,15 +25,17 @@ module Fastlane
       def self.stamp(changelog_path, section_identifier, stamp_date, git_tag, placeholder_line)
         # 1. Update [Unreleased] section with given identifier
         Actions::UpdateChangelogAction.run(changelog_path: changelog_path,
-                                          section_identifier: UNRELEASED_IDENTIFIER,
-                                          updated_section_identifier: section_identifier,
-                                          append_date: stamp_date,
-                                          excluded_placeholder_line: placeholder_line)
+                                           section_identifier: UNRELEASED_IDENTIFIER,
+                                           updated_section_identifier: section_identifier,
+                                           append_date: stamp_date,
+                                           excluded_placeholder_line: placeholder_line)
 
         file_content = ""
+        last_line = ""
 
         # 2. Create new [Unreleased] section (placeholder)
         inserted_unreleased = false
+        just_inserted = false
         File.open(changelog_path, "r") do |file|
           file.each_line do |line|
             # Find the first section identifier
@@ -48,6 +50,7 @@ module Fastlane
               end
 
               inserted_unreleased = true
+              just_inserted = true
 
               UI.message("Created [Unreleased] placeholder section")
 
@@ -57,37 +60,87 @@ module Fastlane
             end
 
             # Output read line
-            file_content.concat(line)
+            if inserted_unreleased
+              unless just_inserted
+                file_content.concat(last_line)
+              end
+              just_inserted = false
+              last_line = line
+            else
+              file_content.concat(line)
+            end
           end
         end
 
         # 3. Create link to git tags diff
         if !git_tag.nil? && !git_tag.empty?
-          last_line = file_content.lines.last
+          git = ''
           previous_tag = ""
           previous_previous_tag = ""
 
-          if last_line.include? 'https://github.com' # GitHub uses compare/olderTag...newerTag structure
-            previous_previous_tag = %r{(?<=compare\/)(.*)?(?=\.{3})}.match(last_line)
-            previous_tag = /(?<=\.{3})(.*)?/.match(last_line)
+          github_tag = 'github/gitlab'
+          bitbucket_tag = 'bitbucket'
+
+          if last_line.include? 'https://github.com' or last_line.include? 'http://gitlab.' or last_line.include? 'https://gitlab.com' # GitHub and Gitlab use compare/olderTag...newerTag structure
+            git = github_tag
+            previous_previous_tag = %r{(?<=compare\/)(.*)?(?=\.{3})}.match(last_line).to_s
+            previous_tag = %r{(?<=\.{3})(.*)?}.match(last_line)
           elsif last_line.include? 'https://bitbucket.org' # Bitbucket uses compare/newerTag..olderTag structure
+            git = bitbucket_tag
+            previous_previous_tag = %r{(?<=\.{2})(.*)?}.match(last_line).to_s
             previous_tag = %r{(?<=compare\/)(.*)?(?=\.{2})}.match(last_line)
-            previous_previous_tag = /(?<=\.{2})(.*)?/.match(last_line)
           end
 
-          # Replace section identifier
-          cleared_git_tag = git_tag.delete('[a-z]')
-          cleared_previous_git_tag = previous_tag.to_s.delete('[a-z]')
-          last_line.sub!("[#{cleared_previous_git_tag}]", "[#{cleared_git_tag}]")
+          if last_line.include? UNRELEASED_IDENTIFIER
+            if git == github_tag
+              last_line.sub!("...HEAD", "...#{git_tag}")
+              last_line.sub!(UNRELEASED_IDENTIFIER, "[#{section_identifier}]")
 
-          # Replace previous-previous tag with previous
-          last_line.sub!(previous_previous_tag.to_s, previous_tag.to_s)
+              file_content.concat(last_line)
 
-          # Replace previous tag with new
-          last_line.sub!("..#{previous_tag}", "..#{git_tag}")
+              # Using the modified line to create a new [Unreleased] line
+              last_line.sub!("...#{git_tag}", "...HEAD")
+              last_line.sub!("[#{section_identifier}]", UNRELEASED_IDENTIFIER)
+              last_line.sub!("#{previous_previous_tag}...", "#{git_tag}...")
 
-          UI.message("Created a link for comparison between #{previous_tag} and #{git_tag} tag")
+              file_content.concat(last_line)
 
+            elsif git == bitbucket_tag
+              last_line.sub!("HEAD...", "#{git_tag}...")
+              last_line.sub!(UNRELEASED_IDENTIFIER, "[#{section_identifier}]")
+
+              file_content.concat(last_line)
+
+              # Using the modified line to create a new [Unreleased] line
+              last_line.sub!("#{git_tag}...", "HEAD...")
+              last_line.sub!("[#{section_identifier}]", UNRELEASED_IDENTIFIER)
+              last_line.sub!("...#{previous_previous_tag}", "...#{git_tag}")
+
+              file_content.concat(last_line)
+            end
+
+            UI.message("Updated the link for comparison between #{previous_previous_tag} and #{git_tag} tag")
+            UI.message("Created a link for comparison between #{git_tag} and HEAD tag")
+
+          else
+            file_content.concat(last_line)
+
+            # Replace section identifier
+            cleared_git_tag = git_tag.delete('[a-z]')
+            cleared_previous_git_tag = previous_tag.to_s.delete('[a-z]')
+            last_line.sub!("[#{cleared_previous_git_tag}]", "[#{cleared_git_tag}]")
+
+            # Replace previous-previous tag with previous
+            last_line.sub!(previous_previous_tag.to_s, previous_tag.to_s)
+
+            # Replace previous tag with new
+            last_line.sub!("..#{previous_tag}", "..#{git_tag}")
+
+            UI.message("Created a link for comparison between #{previous_tag} and #{git_tag} tag")
+
+            file_content.concat(last_line)
+          end
+        else
           file_content.concat(last_line)
         end
 
@@ -137,7 +190,7 @@ module Fastlane
                                        env_name: "FL_STAMP_CHANGELOG_PLACEHOLDER_LINE",
                                        description: "The placeholder line to be excluded in stamped section and added to [Unreleased] section",
                                        is_string: true,
-                                       optional: true)
+                                         optional: true)
         ]
       end
 
