@@ -64,6 +64,7 @@ module Fastlane
               unless just_inserted
                 file_content.concat(last_line)
               end
+              just_inserted = false
               last_line = line
             else
               file_content.concat(line)
@@ -165,30 +166,30 @@ module Fastlane
 
       def self.available_options
         [
-            FastlaneCore::ConfigItem.new(key: :changelog_path,
-                                         env_name: "FL_CHANGELOG_PATH",
-                                         description: "The path to your project CHANGELOG.md",
-                                         is_string: true,
-                                         default_value: "./CHANGELOG.md",
-                                         optional: true),
-            FastlaneCore::ConfigItem.new(key: :section_identifier,
-                                         env_name: "FL_STAMP_CHANGELOG_SECTION_IDENTIFIER",
-                                         description: "The unique section identifier to stamp the [Unreleased] section with",
-                                         is_string: true),
-            FastlaneCore::ConfigItem.new(key: :stamp_date,
-                                         env_name: "FL_STAMP_CHANGELOG_SECTION_STAMP_DATE",
-                                         description: "Specifies whether the current date should be appended to section identifier",
-                                         default_value: true,
-                                         optional: true),
-            FastlaneCore::ConfigItem.new(key: :git_tag,
-                                         env_name: "FL_STAMP_CHANGELOG_GIT_TAG",
-                                         description: "The git tag associated with this section",
-                                         is_string: true,
-                                         optional: true),
-            FastlaneCore::ConfigItem.new(key: :placeholder_line,
-                                         env_name: "FL_STAMP_CHANGELOG_PLACEHOLDER_LINE",
-                                         description: "The placeholder line to be excluded in stamped section and added to [Unreleased] section",
-                                         is_string: true,
+          FastlaneCore::ConfigItem.new(key: :changelog_path,
+                                       env_name: "FL_CHANGELOG_PATH",
+                                       description: "The path to your project CHANGELOG.md",
+                                       is_string: true,
+                                       default_value: "./CHANGELOG.md",
+                                       optional: true),
+          FastlaneCore::ConfigItem.new(key: :section_identifier,
+                                       env_name: "FL_STAMP_CHANGELOG_SECTION_IDENTIFIER",
+                                       description: "The unique section identifier to stamp the [Unreleased] section with",
+                                       is_string: true),
+          FastlaneCore::ConfigItem.new(key: :stamp_date,
+                                       env_name: "FL_STAMP_CHANGELOG_SECTION_STAMP_DATE",
+                                       description: "Specifies whether the current date should be appended to section identifier",
+                                       default_value: true,
+                                       optional: true),
+          FastlaneCore::ConfigItem.new(key: :git_tag,
+                                       env_name: "FL_STAMP_CHANGELOG_GIT_TAG",
+                                       description: "The git tag associated with this section",
+                                       is_string: true,
+                                       optional: true),
+          FastlaneCore::ConfigItem.new(key: :placeholder_line,
+                                       env_name: "FL_STAMP_CHANGELOG_PLACEHOLDER_LINE",
+                                       description: "The placeholder line to be excluded in stamped section and added to [Unreleased] section",
+                                       is_string: true,
                                          optional: true)
         ]
       end
