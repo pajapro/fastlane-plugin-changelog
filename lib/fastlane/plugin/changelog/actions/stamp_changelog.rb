@@ -35,6 +35,7 @@ module Fastlane
 
         # 2. Create new [Unreleased] section (placeholder)
         inserted_unreleased = false
+        just_inserted = false
         File.open(changelog_path, "r") do |file|
           file.each_line do |line|
             # Find the first section identifier
@@ -49,6 +50,7 @@ module Fastlane
               end
 
               inserted_unreleased = true
+              just_inserted = true
 
               UI.message("Created [Unreleased] placeholder section")
 
@@ -58,8 +60,14 @@ module Fastlane
             end
 
             # Output read line
-            file_content.concat(last_line)
-            last_line = line
+            if inserted_unreleased
+              unless just_inserted
+                file_content.concat(last_line)
+              end
+              last_line = line
+            else
+              file_content.concat(line)
+            end
           end
         end
 
