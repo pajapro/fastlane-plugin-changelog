@@ -64,27 +64,33 @@ module Fastlane
         # 3. Create link to git tags diff
         if !git_tag.nil? && !git_tag.empty?
           last_line = file_content.lines.last
-          previous_tag = ""
-          previous_previous_tag = ""
+          previous_tag = ''
+          previous_previous_tag = ''
+          reversed_tags = false
 
           if last_line.include? 'https://github.com' # GitHub uses compare/olderTag...newerTag structure
             previous_previous_tag = %r{(?<=compare\/)(.*)?(?=\.{3})}.match(last_line)
             previous_tag = /(?<=\.{3})(.*)?/.match(last_line)
           elsif last_line.include? 'https://bitbucket.org' # Bitbucket uses compare/newerTag..olderTag structure
+            reversed_tags = true
             previous_tag = %r{(?<=compare\/)(.*)?(?=\.{2})}.match(last_line)
             previous_previous_tag = /(?<=\.{2})(.*)?/.match(last_line)
           end
 
           # Replace section identifier
-          cleared_git_tag = git_tag.delete('[a-z]')
-          cleared_previous_git_tag = previous_tag.to_s.delete('[a-z]')
-          last_line.sub!("[#{cleared_previous_git_tag}]", "[#{cleared_git_tag}]")
+          previous_section_identifier = /(?<=\[)[^]]+(?=\]:)/.match(last_line)
+          last_line.sub!("[#{previous_section_identifier}]:", "[#{section_identifier}]:")
 
-          # Replace previous-previous tag with previous
-          last_line.sub!(previous_previous_tag.to_s, previous_tag.to_s)
-
-          # Replace previous tag with new
-          last_line.sub!("..#{previous_tag}", "..#{git_tag}")
+          # Replace first tag
+          last_line.sub!(
+            reversed_tags ? previous_tag.to_s : previous_previous_tag.to_s,
+            reversed_tags ? git_tag.to_s : previous_tag.to_s
+          )
+          # Replace second tag
+          last_line.sub!(
+            "..#{reversed_tags ? previous_previous_tag : previous_tag}",
+            "..#{reversed_tags ? previous_tag : git_tag}"
+          )
 
           UI.message("Created a link for comparison between #{previous_tag} and #{git_tag} tag")
 
