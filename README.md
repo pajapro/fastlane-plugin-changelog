@@ -52,7 +52,8 @@ Additionally, you can provide an optional `git_tag` param, specifing git tag ass
 ``` ruby
 stamp_changelog(
   section_identifier: 'Build XYZ', # Specify identifier to stamp the Unreleased section with 
-  git_tag: 'bXYZ' # Specify reference to git tag associated with this section
+  git_tag: 'bXYZ', # Specify reference to git tag associated with this section
+  stamp_date: true # Specify whether current date should be appended to stamped section line (default is `true`)
 )
 ```
 
