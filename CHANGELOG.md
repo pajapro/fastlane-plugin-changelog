@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed: 
+- Fixed `append_date` parameter of `update_changelog` action ([Issue #40](https://github.com/pajapro/fastlane-plugin-changelog/issues/40))
 
 ## [0.12.0] - 2018-11-16
 ### Fixed:
