@@ -56,5 +56,52 @@ describe Fastlane::Actions::UpdateChangelogAction do
 
       expect(read_result).to eq(post_update_read_result)
     end
+
+    it 'updates [Unreleased] section identifier without appending date' do
+      # Update [Unreleased] section identifier with new one
+      Fastlane::FastFile.new.parse("lane :test do
+        update_changelog(changelog_path: '#{changelog_mock_path}',
+                          updated_section_identifier: '#{updated_section_identifier}',
+                          append_date: false)
+      end").runner.execute(:test)
+
+      # Read updated section line
+      modifiedSectionLine = ""
+      File.open(changelog_mock_path_hook, "r") do |file|
+        file.each_line do |line|
+            if line =~ /\#{2}\s?\[#{updated_section_identifier}\]/
+              modifiedSectionLine = line
+            break
+          end
+        end
+      end
+
+      # Expect the modified section line to be without date
+      expect(modifiedSectionLine).to eq("## [12.34.56]\n")
+    end
+
+    it 'updates [Unreleased] section identifier with appending date' do 
+      # Update [Unreleased] section identifier with new one
+      Fastlane::FastFile.new.parse("lane :test do
+        update_changelog(changelog_path: '#{changelog_mock_path}',
+                          updated_section_identifier: '#{updated_section_identifier}',
+                          append_date: true)
+      end").runner.execute(:test)
+
+      # Read updated section line
+      modifiedSectionLine = ""
+      File.open(changelog_mock_path_hook, "r") do |file|
+        file.each_line do |line|
+            if line =~ /\#{2}\s?\[#{updated_section_identifier}\]/
+              modifiedSectionLine = line
+            break
+          end
+        end
+      end
+
+      # Expect the modified section line to be with current date
+      now = Time.now.strftime("%Y-%m-%d")
+      expect(modifiedSectionLine).to eq("## [12.34.56] - #{now}\n")
+    end
   end
 end
