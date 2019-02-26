@@ -118,6 +118,7 @@ module Fastlane
                                        env_name: "FL_UPDATE_CHANGELOG_APPEND_DATE",
                                        description: "Appends the current date in YYYY-MM-DD format after the section identifier",
                                        default_value: true,
+                                       is_string: false,
                                        optional: true),
           FastlaneCore::ConfigItem.new(key: :excluded_placeholder_line,
                                        env_name: "FL_UPDATE_CHANGELOG_EXCLUDED_PLACEHOLDER_LINE",
