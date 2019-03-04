@@ -78,7 +78,7 @@ module Fastlane
           end
 
           # Replace section identifier
-          previous_section_identifier = /(?<=\[)[^]]+(?=\]:)/.match(last_line)
+          previous_section_identifier = /(?<=\[)[^\]]+(?=\]:)/.match(last_line)
           last_line.sub!("[#{previous_section_identifier}]:", "[#{section_identifier}]:")
 
           # Replace first tag
