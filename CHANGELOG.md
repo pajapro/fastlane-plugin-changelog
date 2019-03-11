@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.14.0] - 2019-03-11
+### Added: 
+- Support for reversed order of tags in diff link for Bitbucket links ([PR #39](https://github.com/pajapro/fastlane-plugin-changelog/pull/39))
+- Support for stamping section identifier with _version_ instead of _git tag_ ([PR #39](https://github.com/pajapro/fastlane-plugin-changelog/pull/39))
+
 ## [0.13.0] - 2019-02-26
 ### Fixed: 
 - Fixed `append_date` parameter of `update_changelog` action ([Issue #40](https://github.com/pajapro/fastlane-plugin-changelog/issues/40))
