@@ -74,6 +74,12 @@ module Fastlane
         []
       end
 
+      def self.output
+        [
+          ['EMOJIFY_CHANGELOG_CONTENT', 'Contains the emojified content of the last read_changelog action'],
+        ]
+      end
+
       def self.authors
         ["pajapro"]
       end

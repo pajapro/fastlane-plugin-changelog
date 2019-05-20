@@ -103,7 +103,8 @@ module Fastlane
 
       def self.output
         [
-          ['READ_CHANGELOG_SECTION_CONTENT', 'Contains text from a section of your CHANGELOG.md file']
+          ['READ_CHANGELOG_SECTION_CONTENT', 'Contains text from a section of your CHANGELOG.md file'],
+          ['READ_CHANGELOG_CHANGELOG_PATH', 'Contains the path to the CHANGELOG.md file']
         ]
       end
 
