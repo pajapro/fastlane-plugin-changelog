@@ -3,7 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-
+### Added:
+- Missing documentation to read_changelog and emojify_changelog actions ([PR #42](https://github.com/pajapro/fastlane-plugin-changelog/pull/42))
 ## [0.14.0] - 2019-03-11
 ### Added: 
 - Support for reversed order of tags in diff link for Bitbucket links ([PR #39](https://github.com/pajapro/fastlane-plugin-changelog/pull/39))
