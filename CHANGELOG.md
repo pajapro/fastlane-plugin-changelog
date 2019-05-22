@@ -5,18 +5,22 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added:
 - Missing documentation to read_changelog and emojify_changelog actions ([PR #42](https://github.com/pajapro/fastlane-plugin-changelog/pull/42))
+
+### Changed
+- Design of emojify_changelog to support slack message formatting ([PR #43](https://github.com/pajapro/fastlane-plugin-changelog/pull/43))
+
 ## [0.14.0] - 2019-03-11
-### Added: 
+### Added:
 - Support for reversed order of tags in diff link for Bitbucket links ([PR #39](https://github.com/pajapro/fastlane-plugin-changelog/pull/39))
 - Support for stamping section identifier with _version_ instead of _git tag_ ([PR #39](https://github.com/pajapro/fastlane-plugin-changelog/pull/39))
 
 ## [0.13.0] - 2019-02-26
-### Fixed: 
+### Fixed:
 - Fixed `append_date` parameter of `update_changelog` action ([Issue #40](https://github.com/pajapro/fastlane-plugin-changelog/issues/40))
 
 ## [0.12.0] - 2018-11-16
 ### Fixed:
-- Bug when creating git tags comparison link ([Issue #32](https://github.com/pajapro/fastlane-plugin-changelog/issues/32)) 
+- Bug when creating git tags comparison link ([Issue #32](https://github.com/pajapro/fastlane-plugin-changelog/issues/32))
 
 ## [0.10.0] - 2018-11-11
 ### Fixed:
