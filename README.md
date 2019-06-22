@@ -88,26 +88,26 @@ Deprecated:
 emojifies into:
 
 ```
-Added 🎁:
-- New awesome feature
+*Added* 🎁:
+• New awesome feature
 
-Changed ↔️:
-- Onboarding flow UI
+*Changed* ↔️:
+• Onboarding flow UI
 
-Fixed ✅:
-- Fix Markdown links 
+*Fixed* ✅:
+• Fix Markdown links 
 
-Removed 🚫:
-- User tracking 
+*Removed* 🚫:
+• User tracking 
 
-Work In Progress 🚧:
-- Sales screen
+*Work In Progress* 🚧:
+• Sales screen
 
-Security 🔒:
-- Enable SSL pinning
+*Security* 🔒:
+• Enable SSL pinning
 
-Deprecated 💨:
-- Obsolete contact screen
+*Deprecated* 💨:
+• Obsolete contact screen
 ```
 
 Example of use:
