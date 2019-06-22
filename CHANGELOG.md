@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.15.0] - 2019-06-33
 ### Added:
 - Missing documentation to read_changelog and emojify_changelog actions ([PR #42](https://github.com/pajapro/fastlane-plugin-changelog/pull/42))
 
@@ -98,3 +100,5 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [0.10.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.9.0...v0.10.0
 [0.12.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.10.0...v0.12.0
 [0.13.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.12.0...v0.13.0
+[0.14.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.13.0...v0.14.0
+[0.15.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.14.0...v0.15.0
