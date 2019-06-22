@@ -28,14 +28,14 @@ module Fastlane
 
           if SUBSECTION_IDENTIFIERS.include?(stripped)
             emojified_string = case stripped
-                               when 'Added' then 'Added 🎁'
-                               when 'Changed' then 'Changed ↔️'
-                               when 'Fixed' then 'Fixed ✅'
-                               when 'Removed' then 'Removed 🚫'
-                               when 'Work In Progress' then 'Work In Progress 🚧'
-                               when 'Security' then 'Security 🔒'
-                               when 'Deprecated' then 'Deprecated 💨'
-                               end
+                                when 'Added' then '*Added* 🎁'
+                                when 'Changed' then '*Changed* ↔️'
+                                when 'Fixed' then '*Fixed* ✅'
+                                when 'Removed' then '*Removed* 🚫'
+                                when 'Work In Progress' then '*Work In Progress* 🚧'
+                                when 'Security' then '*Security* 🔒'
+                                when 'Deprecated' then '*Deprecated* 💨'
+                              end
 
             # Add back trailing colon, if previously removed
             if chopped_colon
@@ -49,6 +49,10 @@ module Fastlane
             emojified_content.concat(emojified_string)
           else
             # Output updated line
+            # Replace '-' with '*'
+            if line.start_with?('-')
+              line[0] = '•'
+            end
             emojified_content.concat(line)
           end
         end
