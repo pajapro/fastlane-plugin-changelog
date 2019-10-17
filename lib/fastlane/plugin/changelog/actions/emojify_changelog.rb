@@ -57,7 +57,7 @@ module Fastlane
           end
         end
 
-        UI.success("Successfuly emojified output of read_changelog action")
+        UI.success("Successfully emojified output of read_changelog action")
 
         Actions.lane_context[SharedValues::EMOJIFY_CHANGELOG_CONTENT] = emojified_content
       end
