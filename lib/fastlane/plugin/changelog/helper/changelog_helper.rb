@@ -65,7 +65,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
       # Writes given content to CHANGELOG.md in project root
       def self.write_to_changelog(changelog)
         File.open(CHANGELOG_PATH, 'w') { |f| f.write(changelog) }
-        FastlaneCore::UI.success('Successfuly created CHANGELOG.md')
+        FastlaneCore::UI.success('Successfully created CHANGELOG.md')
       end
 
       def self.get_line_separator(file_path)
