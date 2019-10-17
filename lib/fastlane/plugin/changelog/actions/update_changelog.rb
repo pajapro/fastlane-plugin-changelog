@@ -72,7 +72,7 @@ module Fastlane
         changelog = File.open(changelog_path, "w")
         changelog.puts(file_content)
         changelog.close
-        UI.success("Successfuly updated #{changelog_path}")
+        UI.success("Successfully updated #{changelog_path}")
       end
 
       def self.is_section_line(line)
