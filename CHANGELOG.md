@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed:
+- Fixes some typos of the word "successfully"
 
 ## [0.15.0] - 2019-06-33
 ### Added:
