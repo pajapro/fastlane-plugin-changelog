@@ -101,7 +101,7 @@ module Fastlane
         changelog = File.open(changelog_path, "w")
         changelog.puts(file_content)
         changelog.close
-        UI.success("Successfuly stamped #{section_identifier} in #{changelog_path}")
+        UI.success("Successfully stamped #{section_identifier} in #{changelog_path}")
       end
 
       #####################################################
