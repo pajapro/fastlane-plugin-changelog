@@ -8,7 +8,7 @@ describe Fastlane::Actions::ReadChangelogAction do
        	read_changelog(changelog_path: '#{changelog_mock_path}')
      	end").runner.execute(:test)
 
-      expect(result).to eq("Added\n- New awesome feature")
+      expect(result).to eq("Added\n- New awesome feature\n- New amazing feature")
     end
 
     it 'reads content of specific section' do
@@ -26,7 +26,7 @@ describe Fastlane::Actions::ReadChangelogAction do
        				   excluded_markdown_elements: '')
      	end").runner.execute(:test)
 
-      expect(result).to eq("### Added\n- New awesome feature")
+      expect(result).to eq("### Added\n- New awesome feature\n- New amazing feature")
     end
 
     it 'reads content of [Unreleased] section and excludes list elements (-)' do
@@ -35,7 +35,7 @@ describe Fastlane::Actions::ReadChangelogAction do
        				   excluded_markdown_elements: '-')
      	end").runner.execute(:test)
 
-      expect(result).to eq("### Added\nNew awesome feature")
+      expect(result).to eq("### Added\nNew awesome feature\nNew amazing feature")
     end
 
     it 'reads content of [Unreleased] section and excludes list elements (-) and header 3 (###)' do
@@ -44,7 +44,7 @@ describe Fastlane::Actions::ReadChangelogAction do
        				   excluded_markdown_elements: ['-', '###'])
      	end").runner.execute(:test)
 
-      expect(result).to eq("Added\nNew awesome feature")
+      expect(result).to eq("Added\nNew awesome feature\nNew amazing feature")
     end
   end
 end

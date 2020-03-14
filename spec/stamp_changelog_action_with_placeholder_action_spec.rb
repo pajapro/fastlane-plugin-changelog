@@ -80,7 +80,7 @@ describe Fastlane::Actions::StampChangelogAction do
                            section_identifier: '[#{updated_section_identifier}]')
           end").runner.execute(:test)
 
-        expect(post_stamp_read_result).to eq("Added\n* New awesome feature.")
+        expect(post_stamp_read_result).to eq("Added\n* New awesome feature.\n* New amazing feature")
       end
 
       it 'adds placeholder line to [Unreleased] section after stamping' do
@@ -118,7 +118,7 @@ describe Fastlane::Actions::StampChangelogAction do
             read_changelog(changelog_path: '#{changelog_mock_path}')
           end").runner.execute(:test)
 
-        expect(stamped_section_read_result).to eq("Added\n* New awesome feature.")
+        expect(stamped_section_read_result).to eq("Added\n* New awesome feature.\n* New amazing feature")
         expect(stamped_section_read_result =~ /^#{placeholder_line}/).to be_falsey
         expect(unreleased_section_read_result).to eq("* Your contribution here.")
       end
