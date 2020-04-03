@@ -14,7 +14,7 @@ fastlane add_plugin changelog
 
 This plugin is inspired by and based on [Keep a CHANGELOG](http://keepachangelog.com/) project. [Keep a CHANGELOG](http://keepachangelog.com/) proposes a standardised format for keeping change log of your project repository in `CHANGELOG.md` file. This file contains a curated, chronologically ordered list of notable changes for each version of a project in human readable format.
 
-Since [Keep a CHANGELOG](http://keepachangelog.com/) project proposes a well-defined structure with _sections_ (e.g.: `[Unreleased]`, `0.3.0]`) and _subsections_ (`Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security`) it opens up an opportunity to automate reading from/writing to `CHANGELOG.md` with [`fastlane`](https://fastlane.tools). 
+Since [Keep a CHANGELOG](http://keepachangelog.com/) project proposes a well-defined structure with _sections_ (e.g.: `[Unreleased]`, `[0.3.0]`) and _subsections_ (`Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security`) it opens up an opportunity to automate reading from/writing to `CHANGELOG.md` with [`fastlane`](https://fastlane.tools). 
 
 ## Actions
 `fastlane-plugin-changelog` consists of 3 actions enabling you to manipulate `CHANGELOG.md` from [`fastlane`](https://fastlane.tools).
