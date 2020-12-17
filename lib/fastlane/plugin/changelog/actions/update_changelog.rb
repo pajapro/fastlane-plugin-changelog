@@ -48,8 +48,15 @@ module Fastlane
               line_old = line.dup
               line.sub!(section_name, new_section_identifier)
 
-              if params[:append_date]
-                now = Time.now.strftime("%Y-%m-%d")
+              if params[:append_date_time] || params[:append_date]
+                if params[:append_date_time]
+                  now = Time.now.utc.iso8601
+                  ENV["FL_UPDATE_APPEND_DATE_TIME_VAL"] = now
+                else
+                  now = Time.now.utc.strftime("%Y-%m-%d")
+                  ENV["FL_UPDATE_APPEND_DATE_VAL"] = now
+                end
+
                 line.concat(" - " + now)
                 line.delete!(line_separator) # remove line break, because concatenation adds line break between section identifer & date
                 line.concat(line_separator) # add line break to the end of the string, in order to start next line on the next line
@@ -116,8 +123,14 @@ module Fastlane
                                        optional: true),
           FastlaneCore::ConfigItem.new(key: :append_date,
                                        env_name: "FL_UPDATE_CHANGELOG_APPEND_DATE",
-                                       description: "Appends the current date in YYYY-MM-DD format after the section identifier",
+                                       description: "Appends the current UTC date in YYYY-MM-DD format after the section identifier",
                                        default_value: true,
+                                       is_string: false,
+                                       optional: true),
+          FastlaneCore::ConfigItem.new(key: :append_date_time,
+                                       env_name: "FL_UPDATE_CHANGELOG_APPEND_DATE_TIME",
+                                       description: "Appends the current UTC date in YYYY-MM-DDTHH:MM:SSZ format after the section identifier",
+                                       default_value: false,
                                        is_string: false,
                                        optional: true),
           FastlaneCore::ConfigItem.new(key: :excluded_placeholder_line,
