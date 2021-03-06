@@ -48,9 +48,11 @@ module Fastlane
               line_old = line.dup
               line.sub!(section_name, new_section_identifier)
 
-              append_datetime_format = params[:append_datetime_format]
+              should_append_date = params[:should_append_date]
 
-              if append_datetime_format
+              if should_append_date
+                append_datetime_format = params[:append_datetime_format]
+
                 now = Time.now.utc.strftime(append_datetime_format)
                 ENV["FL_UPDATE_APPEND_DATETIME_VAL"] = now
 
@@ -117,6 +119,12 @@ module Fastlane
                                        env_name: "FL_UPDATE_CHANGELOG_UPDATED_SECTION_IDENTIFIER",
                                        description: "The updated unique section identifier (without square brackets)",
                                        is_string: true,
+                                       optional: true),
+          FastlaneCore::ConfigItem.new(key: :should_append_date,
+                                       env_name: "FL_UPDATE_CHANGELOG_SHOULD_APPEND_DATE",
+                                       description: "Specifies whether the current date as per the append_datetime_format should be appended to section identifier",
+                                       default_value: true,
+                                       is_string: false,
                                        optional: true),
           FastlaneCore::ConfigItem.new(key: :append_datetime_format,
                                        env_name: "FL_UPDATE_CHANGELOG_APPEND_DATETIME_FORMAT",
