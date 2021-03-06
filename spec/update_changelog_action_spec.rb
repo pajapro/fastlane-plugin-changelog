@@ -62,7 +62,7 @@ describe Fastlane::Actions::UpdateChangelogAction do
       Fastlane::FastFile.new.parse("lane :test do
         update_changelog(changelog_path: '#{changelog_mock_path}',
                           updated_section_identifier: '#{updated_section_identifier}',
-                          append_datetime_format: nil)
+                          should_append_date: false)
       end").runner.execute(:test)
 
       # Read updated section line
