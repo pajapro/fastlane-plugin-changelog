@@ -14,22 +14,20 @@ module Fastlane
           UI.important("WARNING: No changes in [Unreleased] section to stamp!")
         else
           section_identifier = params[:section_identifier] unless params[:section_identifier].to_s.empty?
-          stamp_date_time = params[:stamp_date_time]
-          stamp_date = params[:stamp_date_time] ? false : params[:stamp_date]
+          stamp_datetime_format = params[:stamp_datetime_format]
           git_tag = params[:git_tag]
           placeholder_line = params[:placeholder_line]
 
-          stamp(changelog_path, section_identifier, stamp_date, stamp_date_time, git_tag, placeholder_line)
+          stamp(changelog_path, section_identifier, stamp_datetime_format, git_tag, placeholder_line)
         end
       end
 
-      def self.stamp(changelog_path, section_identifier, stamp_date, stamp_date_time, git_tag, placeholder_line)
+      def self.stamp(changelog_path, section_identifier, stamp_datetime_format, git_tag, placeholder_line)
         # 1. Update [Unreleased] section with given identifier
         Actions::UpdateChangelogAction.run(changelog_path: changelog_path,
                                           section_identifier: UNRELEASED_IDENTIFIER,
                                           updated_section_identifier: section_identifier,
-                                          append_date: stamp_date,
-                                          append_date_time: stamp_date_time,
+                                          append_datetime_format: stamp_datetime_format,
                                           excluded_placeholder_line: placeholder_line)
 
         file_content = ""
@@ -131,17 +129,11 @@ module Fastlane
                                        env_name: "FL_STAMP_CHANGELOG_SECTION_IDENTIFIER",
                                        description: "The unique section identifier to stamp the [Unreleased] section with",
                                        is_string: true),
-          FastlaneCore::ConfigItem.new(key: :stamp_date,
-                                       env_name: "FL_STAMP_CHANGELOG_SECTION_STAMP_DATE",
-                                       description: "Specifies whether the current UTC date should be appended to section identifier",
-                                       default_value: true,
-                                       is_string: false,
-                                       optional: true),
-          FastlaneCore::ConfigItem.new(key: :stamp_date_time,
-                                       env_name: "FL_STAMP_CHANGELOG_SECTION_STAMP_DATE_TIME",
-                                       description: "Specifies whether the current UTC date and time should be appended to section identifier",
-                                       default_value: false,
-                                       is_string: false,
+          FastlaneCore::ConfigItem.new(key: :stamp_datetime_format,
+                                       env_name: "FL_STAMP_CHANGELOG_DATETIME_FORMAT",
+                                       description: "The strftime format string to use for the date in the stamped section",
+                                       default_value: '%FZ',
+                                       is_string: true,
                                        optional: true),
           FastlaneCore::ConfigItem.new(key: :git_tag,
                                        env_name: "FL_STAMP_CHANGELOG_GIT_TAG",

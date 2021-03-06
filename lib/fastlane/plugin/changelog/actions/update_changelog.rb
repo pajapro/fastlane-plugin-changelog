@@ -48,14 +48,11 @@ module Fastlane
               line_old = line.dup
               line.sub!(section_name, new_section_identifier)
 
-              if params[:append_date_time] || params[:append_date]
-                if params[:append_date_time]
-                  now = Time.now.utc.iso8601
-                  ENV["FL_UPDATE_APPEND_DATE_TIME_VAL"] = now
-                else
-                  now = Time.now.utc.strftime("%Y-%m-%d")
-                  ENV["FL_UPDATE_APPEND_DATE_VAL"] = now
-                end
+              append_datetime_format = params[:append_datetime_format]
+
+              if append_datetime_format
+                now = Time.now.utc.strftime(append_datetime_format)
+                ENV["FL_UPDATE_APPEND_DATETIME_VAL"] = now
 
                 line.concat(" - " + now)
                 line.delete!(line_separator) # remove line break, because concatenation adds line break between section identifer & date
@@ -121,17 +118,11 @@ module Fastlane
                                        description: "The updated unique section identifier (without square brackets)",
                                        is_string: true,
                                        optional: true),
-          FastlaneCore::ConfigItem.new(key: :append_date,
-                                       env_name: "FL_UPDATE_CHANGELOG_APPEND_DATE",
-                                       description: "Appends the current UTC date in YYYY-MM-DD format after the section identifier",
-                                       default_value: true,
-                                       is_string: false,
-                                       optional: true),
-          FastlaneCore::ConfigItem.new(key: :append_date_time,
-                                       env_name: "FL_UPDATE_CHANGELOG_APPEND_DATE_TIME",
-                                       description: "Appends the current UTC date in YYYY-MM-DDTHH:MM:SSZ format after the section identifier",
-                                       default_value: false,
-                                       is_string: false,
+          FastlaneCore::ConfigItem.new(key: :append_datetime_format,
+                                       env_name: "FL_UPDATE_CHANGELOG_APPEND_DATETIME_FORMAT",
+                                       description: "The strftime format string to use for the date after the section identifier",
+                                       default_value: '%FZ',
+                                       is_string: true,
                                        optional: true),
           FastlaneCore::ConfigItem.new(key: :excluded_placeholder_line,
                                        env_name: "FL_UPDATE_CHANGELOG_EXCLUDED_PLACEHOLDER_LINE",
