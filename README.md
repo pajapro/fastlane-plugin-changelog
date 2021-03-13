@@ -53,7 +53,8 @@ Additionally, you can provide an optional `git_tag` param, specifing git tag ass
 stamp_changelog(
   section_identifier: 'Build XYZ', # Specify identifier to stamp the Unreleased section with 
   git_tag: 'bXYZ', # Specify reference to git tag associated with this section
-  stamp_date: true # Specify whether current date should be appended to stamped section line (default is `true`)
+  should_stamp_date: true, # Specify whether the current date as per the stamp_datetime_format should be stamped to the section identifier (default is `true`)
+  stamp_datetime_format: '%FT%TZ' # Specify strftime format string to use for the date in the stamped section (default `%FZ`)
 )
 ```
 
