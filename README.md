@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-This project is a [fastlane](https://github.com/fastlane/fastlane) plugin. To get started with `fastlane-plugin-changelog`, add it to your project by running:
+This project is a [fastlane](https://github.com/fastlane/fastlane) plugin. To get started with `fastlane-plugin-changelog` add it to your project by running:
 
 ```bash
 fastlane add_plugin changelog
