@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.16.0] - 2021-03-13
 ### Added:
 - Add new `:stamp_datetime_format` param stamp_changelog action to support custom a user provided date time format ([PR #53](https://github.com/pajapro/fastlane-plugin-changelog/pull/53))
 
@@ -110,3 +112,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 [0.13.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.12.0...v0.13.0
 [0.14.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.13.0...v0.14.0
 [0.15.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.14.0...v0.15.0
+[0.16.0]: https://github.com/pajapro/fastlane-plugin-changelog/compare/v0.15.0...v0.16.0
