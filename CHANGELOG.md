@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added:
+- Support diff link for GitLab [#58](https://github.com/pajapro/fastlane-plugin-changelog/issues/58)
+- Validate last line is in the expected format before using as a template for the diff link
+- `:diff_link_format` parameter (for self-hosted or custom domain) supported options `bitbucket` or empty. Empty or not specified assumes GitHub format which others (including GitLab) use.
 
 ## [0.16.0] - 2021-03-13
 ### Added:

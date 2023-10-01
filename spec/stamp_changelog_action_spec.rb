@@ -64,7 +64,7 @@ describe Fastlane::Actions::StampChangelogAction do
           end").runner.execute(:test)
     end
 
-    it 'creates tags comparion GitHub link with prefix' do
+    it 'creates tags comparison GitHub link with prefix' do
       # Stamp [Unreleased] with given section identifier
       Fastlane::FastFile.new.parse("lane :test do
           stamp_changelog(changelog_path: '#{changelog_mock_path}',
@@ -75,5 +75,19 @@ describe Fastlane::Actions::StampChangelogAction do
       modified_file = File.read(changelog_mock_path_hook)
       expect(modified_file.lines.last).to eq("[12.34.56]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...v12.34.56\n")
     end
+
+    it 'skip tag comparison link' do
+      # Stamp [Unreleased] with given section identifier
+      File.open(changelog_mock_path_hook, 'a') { |f| f.puts('[link]: http://example.com') }
+      Fastlane::FastFile.new.parse("lane :test do
+          stamp_changelog(changelog_path: '#{changelog_mock_path}',
+                          section_identifier: '#{updated_section_identifier}',
+                          git_tag: 'v#{updated_section_identifier}')
+          end").runner.execute(:test)
+
+      modified_file = File.read(changelog_mock_path_hook)
+      expect(modified_file.lines.last).to eq("[link]: http://example.com\n")
+    end
+
   end
 end

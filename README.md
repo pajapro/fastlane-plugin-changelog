@@ -48,13 +48,14 @@ update_changelog(
  
 ### 🔖  stamp_changelog
 Stamps the _Unreleased_ (see [How can I minimize the effort required?](http://keepachangelog.com/)) section with provided identifier in your project `CHANGELOG.md` file and sets up a new _Unreleased_ section above it.
-Additionally, you can provide an optional `git_tag` param, specifing git tag associated with this section. `stamp_changelog` will then create a link to diff between this and previous section's tag on GitHub or Bitbucket. This will enable you to quickly get to [comparison between two tags](https://help.github.com/articles/comparing-commits-across-time/).
+Additionally, you can provide an optional `git_tag` param, specifing git tag associated with this section. `stamp_changelog` will then create a link to diff between this and previous section's tag on GitHub, GitLab or Bitbucket. This will enable you to quickly get to [comparison between two tags](https://help.github.com/articles/comparing-commits-across-time/).
 ``` ruby
 stamp_changelog(
   section_identifier: 'Build XYZ', # Specify identifier to stamp the Unreleased section with 
   git_tag: 'bXYZ', # Specify reference to git tag associated with this section
   should_stamp_date: true, # Specify whether the current date as per the stamp_datetime_format should be stamped to the section identifier (default is `true`)
-  stamp_datetime_format: '%FT%TZ' # Specify strftime format string to use for the date in the stamped section (default `%FZ`)
+  stamp_datetime_format: '%FT%TZ', # Specify strftime format string to use for the date in the stamped section (default `%FZ`)
+  diff_link_format: 'bitbucket' # Specify the format of the diff link for self-hosted or custom domains. Supported options are `bitbucket` or empty for GitHub & GitLab
 )
 ```
 
